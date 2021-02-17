@@ -61,8 +61,8 @@ Fine-Grained Off-Road Semantic Segmentation and Mapping via Contrastive Learning
 }
 
 \maketitle
-\thispagestyle{empty}
-\pagestyle{empty}
+%\thispagestyle{empty}
+%\pagestyle{empty}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -103,23 +103,26 @@ are introduced in Section \ref{related_works}. Section \ref{methodology} present
 
 \section{Related Works} \label{related_works}
 \subsection{Traditional Methods}
-Rule-based: 消失点, 三角形/梯形;
+%Rule-based: 消失点, 三角形/梯形;
 Segmentation-based: AdaBoost, SVM, GMM
 
 \subsection{Deep Learning Methods}
-FCN, IV-19等
+%FCN, IV-19等
 
 \subsection{Contrastive Learning}
 CMC, MoCo, SimCLR
 
-\section{Methodology} \label{methodology}
 \begin{figure*}[]
-%	\vspace{-2mm}
+	%	\vspace{-2mm}
 	\centering
 	\includegraphics[scale=0.24]{pipeline.pdf}
 	\caption{The proposed pipeline for fine-grained off-road semantic segmentation via contrastive learning.}
 	\label{fig:pipeline}
 \end{figure*}
+
+
+\section{Methodology} \label{methodology}
+
 \subsection{Problem Formulation}
 
 A training image $I_k$ has a number of anchor patches $A_k=\{\mathcal{P}_{k,i}=<p_{k,i},a_{k,i}>\}$, where an anchor patch $\mathcal{P}_{k,i}$ is a pair of an image patch $p_{k,i}$ and a label $a_{k,i}$. Here, $a_{k,i}$ has no semantic meaning, but is an identifier of the image patches with similar or different semantic properties.
@@ -130,17 +133,6 @@ In order to make the annotation operational easy, in this research, the labels o
 
 Given a set of training images $\mathcal{I}=\{I_k\}$ with anchor patches $\mathcal{A}=\{A_k\}$ on each of them, this research is to find a representation $f_{\theta}$ that encodes image patch $p$ to $z$, where at the low-dimensional feature space $\mathbb{Z}^D$, the $z$s of similar semantic meaning distribute closely. 
 This research finds $f_{\theta}$ through contrastive learning, which is further used in an application of fine-grained semantic segmentation for off-road traversability analysis.
-\subsection{Feature Representation through Contrastive Learning}
-
-\subsubsection {Sampling strategy}
-%In each training step, an anchor patches $\mathcal{P}_{k,i}$ is selected to compose a query sample $q$, and anchor patches with the same label as $\mathcal{P}_{k,i}$ are denoted as $\{\mathcal{P}_{k,i}^+\}$. Assuming that an image of the scene is spatially continuous, i.e. nearby regions could be semantically similar, an image patch is randomly sampled from $\mathcal{P}_{k,i}$'s and $\{\mathcal{P}_{k,i}^+\}$'s neighbors to compose a positive sample $q^+$. Meanwhile, $n$ negative samples $\{q^-\}$ are composed by randomly selecting the anchor patches of different label or sampling from their neighborhood. As shown in Fig. \ref{fig:dataaug}(a), sampled neighbors' centers are inside the origin anchor patch, to maintain spatial continuity.
-In each training step, an anchor patch $\mathcal{P}_{k,i}$ is selected to compose a query sample $q$, and a positive sample $q^+$ and $n$ negative samples $\{q^-_i|i=1,..,n\}$ are subsequently composed on the anchor patches of the same image $I_k$.
-
-Based on the label $a_{k,i}$ of $\mathcal{P}_{k,i}$, the anchor patches of the same image $I_k$ are divided into two sets, where $\{\mathcal{P}_{k,i}^+\}$ denotes those sharing the same label $a_{k,i}$, whereas $\{\mathcal{P}_{k,i}^-\}$ for the rest.
-Assuming that an off-road scene is spatially continuous, i.e. nearby regions could be semantically similar.
-An anchor patch is first selected randomly from $\{\mathcal{P}_{k,i}^+\}$, where an image patch is randomly clipped from its neighborhood to compose a positive sample $q^+$. As illustrated in Fig. \ref{fig:dataaug}(a), the neighborhood is defined to have the center point of the randomly clipped image patch within the original one. Similarly, $n$ negative samples $\{q^-_i\}$ are composed on $\{\mathcal{P}_{k,i}^-\}$.
-
-\subsubsection{Composing sample data}
 
 \begin{figure}[]
 	%	\vspace{-2mm}
@@ -149,18 +141,26 @@ An anchor patch is first selected randomly from $\{\mathcal{P}_{k,i}^+\}$, where
 	\caption{Illustration of (a) neighborhood sampling strategy, and (b) how to add background information with the origin image patch.}
 	\label{fig:dataaug}
 \end{figure}
-%In order to enrich the diversity of input samples and train a robust feature encoder, data augmentation $\phi$ will be implemented to the query sample $q$, its positive sample $q^+$ and negative samples $\{q^-\}$, before fed to the encoder network.
-%The basic data augmentation includes commonly used random flip, grey scale and color jitter, which randomly change the brightness, contrast and saturation of an image.
-%In addition, we propose to add background information as an advanced data augmentation, shown in Fig. \ref{fig:dataaug}(b). One anchor patch and its concentric larger-size background patch will be resized to the same scale and concatenated along the channel dimension to get a 6-channel tensor. Depending on different augmentation settings, the image patch of query sample $q$ could be a common 3-channel image or a 6-channel tensor including both foreground and background image patches.
+
+\subsection{Feature Representation through Contrastive Learning}
+
+\subsubsection {Sampling strategy}
+
+In each training step, an anchor patch $\mathcal{P}_{k,i}$ is selected to compose a query sample $q$, and a positive sample $q^+$ and $n$ negative samples $\{q^-_i|i=1,..,n\}$ are subsequently composed on the anchor patches of the same image $I_k$.
+
+Based on the label $a_{k,i}$ of $\mathcal{P}_{k,i}$, the anchor patches of the same image $I_k$ are divided into two sets, where $\{\mathcal{P}_{k,i}^+\}$ denotes those sharing the same label $a_{k,i}$, whereas $\{\mathcal{P}_{k,i}^-\}$ for the rest.
+Assuming that an off-road scene is spatially continuous, i.e. nearby regions could be semantically similar.
+An anchor patch is first selected randomly from $\{\mathcal{P}_{k,i}^+\}$, where an image patch is randomly clipped from its neighborhood to compose a positive sample $q^+$. As illustrated in Fig. \ref{fig:dataaug}(a), the neighborhood is defined to have the center point of the randomly clipped image patch within the original one. Similarly, $n$ negative samples $\{q^-_i\}$ are composed on $\{\mathcal{P}_{k,i}^-\}$.
+
+\subsubsection{Composing sample data}
+
 With an image patch $p$, a sample data is composed in the same way for query, positive or negative samples.
 As shown in Fig. \ref{fig:dataaug}(b), a sample data contains foreground and background image patches to describe both local and global features. Foreground is image patch $p$, while background is centered at $p$ but with a larger region to provide global scene context. The foreground and background patches are firstly resized to the same scale, then the two patches are concatenated along the channel dimension to compose a 6-channel tensor.
 
 In order to improve robustness in diverse scenes, data augmentation (denoted by $\phi$ in Fig. \ref{fig:pipeline}) is conducted on the 6-channel tensor of each sample data before forwarding it to the network of $f_{\theta}$. In this research, data augmentation includes random flip, random grey scale and color jitter, which randomly changes the brightness, contrast and saturation of an image.
 
 \subsubsection{Network Design and Loss Function}
-%After data augmentation, the sample $q$ will be taken as input of the feature encoder $f_{\theta}$, which is a CNN backbone network in practical terms, e.g., AlexNet\cite{krizhevsky2012imagenet}. The backbone network's output is a latent feature vector $z\in \mathbb{Z}^D$. By the way, unlike some typical contrastive learning studies\cite{Wu_2018_CVPR} using memory bank to store latent features for each training sample, we randomly select positive/negative samples and calculate their features at each training step. Because in this work, the positive and negative samples are comparable only in the same image, the limited quantity makes it possible to get the latest feature representations with reasonable memory consumption.
-
-A CNN backbone network in practical terms, e.g. AlexNet[2] is used to model $f_{\theta}$, which converts the 6-channel tensor of a query, positive or negative sample to a low-dimensional feature vector $z\in \mathbb{Z}^D$.
+A CNN backbone network in practical terms, e.g. AlexNet\cite{krizhevsky2012imagenet} is used to model $f_{\theta}$, which converts the 6-channel tensor of a query, positive or negative sample to a low-dimensional feature vector $z\in \mathbb{Z}^D$.
 Contrastive learning is used to find a $\theta$ of $f_{\theta}$, with which the exponential cosine distance of the $z$s are close if they share the same labels, whereas far for those different.
 Following the principle of previous contrastive learning studies, a contrastive loss function InfoNCE\cite{oord2018representation} is implemented:
 
@@ -169,29 +169,38 @@ L=-\log {\dfrac{\exp (z^T \cdot z^+/\tau)}{\exp (z^T \cdot z^+/\tau)+\sum_{i=0}^
 \end{equation}
 where $\tau$ denotes a temperature hyper-parameter.
 
-\subsection{Fine-grained Off-road Semantic Segmentation}
-\subsubsection{Pipeline}
-The pipeline is shown in Fig. \ref{fig:pipeline}. In training stage, the feature encoder $f_\theta$ is trained through contrastive learning. Then, all training image patches' will be clustered in the latent feature space $\mathbb{Z}$ and get some category clusters $\mathcal{C}=\{c_i\}$.
-When predicting, given an image $\mathcal{I}$, we use sliding windows to get query patches, then project them into feature space $\mathbb{Z}$ and classify into existing category clusters $\mathcal{C}$. Therefore, each patch will get a category label and constitute semantic segmentation results.
+In this work, since the positive and negative samples are comparable only in the same image, the limited quantity makes it possible to get the feature representations with reasonable memory consumption. In practice, unlike the typical contrastive learning studies\cite{Wu_2018_CVPR} using memory bank to store feature vectors for each training sample, we randomly select positive/negative samples and calculate their features at each training step.
 
-\subsubsection{Clustering and Semantic Segmentation} \label{3_CSS}
+\subsection{Off-road Semantic Segmentation and Mapping}
 
-We use K-means algorithm for category clustering of all anchor patches in training set. Exponential cosine distance $d(p_i,p_j)=exp(z_i^T \cdot z_j)$ is used to evaluate distances between image patches. By the way, the clustering number $\mathcal{K}$ is assigned by human, which decides category granularity.
+As illustrated in Fig. \ref{fig:pipeline}, the work flow contains off-line learning and on-line prediction, while the latter is composed of further two steps: semantic segmentation of single images and semantic mapping using multiple images.
 
-When predicting dense semantic segmentation, patches' corresponding latent features are projected to feature space $\mathcal{Z}$ through $f_\theta$. The semantic label will be assigned by the closest cluster center. To make up denser semantic segmentation, we could adjust step size of sliding windows. For example, we can assign the semantic label to $3*3$ pixels centered at each image patch, while setting sliding windows' horizontal/vertical step size to 3 pixels, then get denser semantic segmentation results.
+\subsubsection{Off-line learning}
+Given a set of training images $\mathcal{I}=\{I_k\}$ with anchor patches $\mathcal{A}=\{A_k\}$ on each of them, a feature encoder $f_\theta$ is thus learnt to convert each image patch to a low-dimensional vector $z\in \mathbb{Z}^D$, where in the space of $\mathbb{Z}^D$, the anchor patches with the same labels are projected close on the exponential cosine distance $exp(z_i^T \cdot z_j)$, whereas far for the others.
 
-To evaluate the overall performance and consistence of the fine-grained prediction on continuous video frames, we project the semantic segmentation of images to corresponding LiDAR point clouds, and utilize GPS/IMU information to make semantic maps. Testing of continuous video frames will lead to multiple predictions of the same pixel on the semantic map. Let $\sigma_c$ denote the counts of prediction with label $c$, then the pixel label in semantic maps will be $l=\mathop{\text{argmax}_{c} (\sigma_c)}$. Confidence map indicates the predictions' consistency, where each pixel's value is $\max(\sigma_c)/\sum{\sigma_c}$.
+The $z$s of the anchor patches are then clustered by K-means method, where a set of mean points $\mathcal{C}=\{\tilde{z}_c\}$ are extracted, representing the features of $\mathcal{K}$ dominant semantic clusters. Here, $\mathcal{K}$ is a hyper-parameter, which decides granularity of semantic segmentation.
+
+\subsubsection{Semantic segmentation}
+
+Given the current image $\mathcal{I}$, semantic segmentation is conducted by generating image patches using sliding windows, and predicting a semantic label for each image patch.
+Given an image patch $p_i$, a semantic label is predicted as follows. A 6-channel tensor data is first composed, containing both local and global features of the image patch. The data is then projected by $f_{\theta}$ to a lower-dimensional feature vector $z_i$, which is subsequently compared with the set of feature vectors $\mathcal{C}=\{\tilde{z}_c\}$ representing the $\mathcal{K}$ dominant semantic labels. The image patch is assigned the semantic label that has the best match on its feature vector, i.e. $a_i = \arg\min_c exp(z_i^T \cdot \tilde{z}_c)$.
+
+To make up denser semantic segmentation, we could adjust step size of sliding windows. For example, we can assign the semantic label to $3*3$ pixels centered at each image patch, while setting sliding windows' horizontal/vertical step size to 3 pixels, then get denser semantic segmentation results.
+
+\subsubsection{Semantic mapping} \label{3_SM}
+
+Centered at the ego vehicle's location in the frame, a horizontal plane is drawn at the ground level and tessellated into regular grids. The pixel labels of the current image are projected to corresponding 3D LiDAR point clouds with the calibration parameters, and then projected onto the grids with additional vehicle localization data at each frame. Since a single grid can have multiple label predictions, let $\sigma_{x,y}^c$ denote the counts of predicting label $c$ of grid $(x,y)$, the semantic label $l_{x,y}=\mathop{\text{argmax}_{c} (\sigma_{x,y}^c)}$ is assigned to the grid. Meanwhile, a confidence map is estimated too indicating the confidence of the grids' predicted labels. The confidence value of grid $(x,y)$ is assigned as $\max(\sigma_{x,y}^c)/\sum{\sigma_{x,y}^c}$, which can also serve as a measure to evaluate prediction consistency.
 
 \section{Experimental Results}	\label{exp}
 \subsection{Dataset}
-The performance of our proposed method is evaluated on the off-road dataset, called \textit{GL-Offroad}. The dataset is collected by an instrumented vehicle with a front-view monocular camera, a GPS/IMU suite and a 3D LiDAR. In this work, we mainly use camera images as input data, while the GPS/IMU and LiDAR data are supplementary for semantic mapping.
-As shown in Table \ref{tab:dataset}, the \textit{GL-Offroad} dataset includes 3 subsets. Take subset A as an example, we randomly selected 50 frames for 973 anchors annotation and training, which only account for about $10\%$ of total 5064 frames. While all frames are evaluated when testing, and frames with human annotations are taken into account in quantitative evaluation.
+The performance of the proposed method is evaluated on our off-road dataset. The dataset is collected by an instrumented vehicle with a front-view monocular camera, a GPS/IMU suite and a 3D LiDAR. In this work, we mainly use camera images as input data, while the GPS/IMU and LiDAR data are supplementary for semantic mapping.
+As shown in Table \ref{tab:dataset}, the off-road dataset includes 3 subsets. Take subset A as an example, we randomly selected 50 frames for 973 anchors annotation and training, which only account for about $10\%$ of total 5064 frames. While all frames are evaluated when testing, and frames with human annotations are taken into account in quantitative evaluation.
 
 In addition, as shown in Fig. \ref{fig:dataset}, the 3 subsets represent different typical off-road environments. The scenarios in subset A are mostly narrow roads with bushes aside. Subset B are relatively wide scenes, and subset C includes diverse scenarios like slimy path in woodland and flatland without road structure. In following experiments, we train and test the proposed method on different subsets to evaluate its cross-scene generalization performance.
 
 \begin{table}[h]
 	\centering
-	\caption{Statistics of \textit{GL-Offroad} dataset}
+	\caption{Statistics of the off-road dataset}
 	\label{tab:dataset}
 	\begin{tabular}{cccc} 
 		\hline
@@ -219,7 +228,7 @@ We denote positive samples' constraints as $Pos(i,j)$: if anchor $a_i$ and $a_j$
 Negative samples' constraints are defined in a similar way, and denoted as $Neg(i,j)$.
 %正样本约束:若锚点$a_i$和$a_j$互为正样本，且聚类标签$Lab_i=Lab_j$，则满足正样本约束，并记$Pos(i,j)=1$，否则$Pos(i,j)=0$. 负样本约束$Neg(i,j)$定义同理；
 
-\begin{figure*}[b]
+\begin{figure*}[]
 	%	\vspace{-2mm}
 	\centering
 	\includegraphics[scale=0.4]{anchor_dis.pdf}
@@ -232,7 +241,7 @@ We use the following metrics to evaluate how well the clustering results fit hum
 \begin{equation}
 \mathcal{R}=\dfrac{\sum_{i,j}{Pos(i,j)}+\sum_{i,j}{Neg(i,j)}}{N\cdot (N-1)}, i \neq j
 \end{equation}
-Essentially, it can be seen as Rand Index \cite{rand1971objective}, which is a common used measurement for clustering.
+Essentially, it can be seen as Rand Index \cite{rand1971objective}, which is a commonly used measurement for clustering.
 
 \begin{table*}
 	\centering
@@ -289,10 +298,6 @@ The core module in our proposed pipeline is the feature encoder $f_\theta$, whic
 %\textbf{结论3}：从图\ref{fig:kmeans_exp}看出，聚类数量的变化会略微影响锚点吻合度, 但不是决定因素。整体来看，不同模型的性能排序与结论1一致。
 For comprehensive evaluation of the proposed method, we make cross validation on models with different settings, and the statistics of $\mathcal{R}$ are shown in Table \ref{tab:cross_eval}. The table cells are colorized by column data, when training and testing on different subsets. The last column lists the average performance $\bar{\mathcal{R}}$ of models on test sets (different subsets with the training one). It is obviously that \textit{BG320} has the best performance on test sets, and all three models with background information have $\mathcal{R}$ over 0.85 among all training/testing combinations, which demonstrates the robustness of our proposed method.
 
-Comparing the basic data augmentation with background information, they can both increase models' performance, while the latter makes more contribution. Besides, increasing background size could sightly improve the overall performance, but not obvious at all situations.
-
-By the way, above experiments uniformly used clustering number $\mathcal{K}=6$. How does clustering number affects models' performance? An ablation study of $\mathcal{K}$ is made, and the results are shown in Fig. \ref{fig:kmeans_exp}. We can find that the models' performance with regard to $\mathcal{K}$ are basically stable when $\mathcal{K} \geq 4$, and slightly decrease when $\mathcal{K}>6$. In general, models' performance with different $\mathcal{K}$s approximately order the same as Table \ref{tab:cross_eval}. Therefore, we choose $\mathcal{K}=6$ as other experiments' setting, which balances the fine-grained demand and model performance.
-
 \begin{figure*}[]
 	%	\vspace{-2mm}
 	\centering
@@ -300,6 +305,10 @@ By the way, above experiments uniformly used clustering number $\mathcal{K}=6$. 
 	\caption{Some cases of fine-grained semantic segmentation.}
 	\label{fig:semantic_segmentation}
 \end{figure*}
+
+Comparing the basic data augmentation with background information, they can both increase models' performance, while the latter makes more contribution. Besides, increasing background size could sightly improve the overall performance, but not obvious at all situations.
+
+By the way, above experiments uniformly used clustering number $\mathcal{K}=6$. How does clustering number affects models' performance? An ablation study of $\mathcal{K}$ is made, and the results are shown in Fig. \ref{fig:kmeans_exp}. We can find that the models' performance with regard to $\mathcal{K}$ are basically stable when $\mathcal{K} \geq 4$, and slightly decrease when $\mathcal{K}>6$. In general, models' performance with different $\mathcal{K}$s approximately order the same as Table \ref{tab:cross_eval}. Therefore, we choose $\mathcal{K}=6$ as other experiments' setting, which balances the fine-grained demand and model performance.
 
 \begin{figure*}[]
 	%	\vspace{-2mm}
@@ -327,7 +336,7 @@ Due to the absent of ground truth for fine-grained off-road semantic segmentatio
 
 Fig. \ref{fig:semantic_segmentation} shows some cases of fine-grained semantic segmentation. This work focuses on off-road traversability analysis, so we do not pay attention to the sky area, and only bottom half of the image are predicted for simplicity. The semantic labels are not pre-assigned, we can find some uniform semantic meanings through these concrete cases. For example, green indicates hard earth road and paved road, blue pixels are vegetation, yellow pixels are road with fallen leaves or muddy area, red pixels are stones or woods, etc. Different colors represent different clusters, and they can generally distinguish diverse semantic meanings.
 
-To evaluate the overall performance and consistence of the fine-grained prediction on continuous video frames, we make semantic maps and confidence maps as described in Sec. \ref{3_CSS}. As shown in Fig. \ref{fig:semantic_mapping}(d)(e), our fine-grained predictions can label the roadside area (yellow) with higher traversability cost than middle road (green), while the traditional coarse-grained region grow method is unable to distinguish them. In Fig. \ref{fig:semantic_mapping}(case 2), let us pay attention to bumps in the middle of the road, which is a hard case. Although it has been separated in the single frame prediction in Fig. \ref{fig:semantic_mapping}(d), its segmentation is not stable enough to obtain majority votes in the semantic map. The good news is, confidence map in (f)(g) can be helpful to distinguish this subtle traversability difference, where the bumps area are darker than other well-travelled road.
+To evaluate the overall performance and consistence of the fine-grained prediction on continuous video frames, we make semantic maps and confidence maps as described in Sec. \ref{3_SM}. As shown in Fig. \ref{fig:semantic_mapping}(d)(e), our fine-grained predictions can label the roadside area (yellow) with higher traversability cost than middle road (green), while the traditional coarse-grained region grow method is unable to distinguish them. In Fig. \ref{fig:semantic_mapping}(case 2), let us pay attention to bumps in the middle of the road, which is a hard case. Although it has been separated in the single frame prediction in Fig. \ref{fig:semantic_mapping}(d), its segmentation is not stable enough to obtain majority votes in the semantic map. The good news is, confidence map in (f)(g) can be helpful to distinguish this subtle traversability difference, where the bumps area are darker than other well-travelled road.
 
 More than case study of fine-grained semantic, segmentation, a statistical traversability analysis is provided in Fig. \ref{fig:lidar_analysis}, which is based on 3D point clouds with labels projected from fine-grained image semantic segmentation. By the way, the semantic meanings of color table is not pre-defined, but concluded from our model's predictions.
 In Fig. \ref{fig:lidar_analysis}(a-c), it is obvious that green, yellow and cyan are mainly distribute around the ground level, which are three primary road types. Furthermore, in Fig. \ref{fig:lidar_analysis}(d-f), we can find their different traversability cost, where green points have the narrowest variance distribution, corresponding to the most well-travelled paved road and hard earth road. Yellow and cyan boxes are longer, indicating more bumpy road surface. They are mainly soft earth, bumps or muddy area at the roadside. Blue boxes are mostly bushes and trees, with the highest average height and traversability cost, which is in accord with boxplots distribution. In summary, the statistical analysis of additional 3D LiDAR data can prove the validity of our fine-grained off-road semantic segmentation.

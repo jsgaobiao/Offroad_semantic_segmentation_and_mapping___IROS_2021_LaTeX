@@ -1,24 +1,25 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{Related\040Works}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Traditional\040Methods}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Deep\040Learning\040Methods}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.3}{Contrastive\040Learning}{section.2}% 5
+\BOOKMARK [1][-]{section.2}{Related Works}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Traditional Methods}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Deep Learning Methods}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Contrastive Learning}{section.2}% 5
 \BOOKMARK [1][-]{section.3}{Methodology}{}% 6
-\BOOKMARK [2][-]{subsection.3.1}{Problem\040Formulation}{section.3}% 7
-\BOOKMARK [2][-]{subsection.3.2}{Feature\040Representation\040through\040Contrastive\040Learning}{section.3}% 8
-\BOOKMARK [3][-]{subsubsection.3.2.1}{Sampling\040strategy}{subsection.3.2}% 9
-\BOOKMARK [3][-]{figure.caption.2}{Composing\040sample\040data}{subsection.3.2}% 10
-\BOOKMARK [3][-]{subsubsection.3.2.3}{Network\040Design\040and\040Loss\040Function}{subsection.3.2}% 11
-\BOOKMARK [2][-]{subsection.3.3}{Fine-grained\040Off-road\040Semantic\040Segmentation}{section.3}% 12
-\BOOKMARK [3][-]{subsubsection.3.3.1}{Pipeline}{subsection.3.3}% 13
-\BOOKMARK [3][-]{subsubsection.3.3.2}{Clustering\040and\040Semantic\040Segmentation}{subsection.3.3}% 14
-\BOOKMARK [1][-]{section.4}{Experimental\040Results}{}% 15
-\BOOKMARK [2][-]{subsection.4.1}{Dataset}{section.4}% 16
-\BOOKMARK [2][-]{subsection.4.2}{Evaluation\040Metrics}{section.4}% 17
-\BOOKMARK [2][-]{subsection.4.3}{Results\040on\040Proposed\040Method}{section.4}% 18
-\BOOKMARK [3][-]{subsubsection.4.3.1}{Feature\040Distance\040Measurement}{subsection.4.3}% 19
-\BOOKMARK [3][-]{subsubsection.4.3.2}{Cross\040Validation\040and\040Ablation\040Study}{subsection.4.3}% 20
-\BOOKMARK [3][-]{subsubsection.4.3.3}{Fine-Grained\040Semantic\040Segmentation\040and\040Mapping}{subsection.4.3}% 21
-\BOOKMARK [2][-]{subsection.4.4}{Challenges}{section.4}% 22
-\BOOKMARK [1][-]{section.5}{CONCLUSIONS}{}% 23
-\BOOKMARK [1][-]{section*.13}{References}{}% 24
+\BOOKMARK [2][-]{subsection.3.1}{Problem Formulation}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Feature Representation through Contrastive Learning}{section.3}% 8
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Sampling strategy}{subsection.3.2}% 9
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Composing sample data}{subsection.3.2}% 10
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Network Design and Loss Function}{subsection.3.2}% 11
+\BOOKMARK [2][-]{subsection.3.3}{Off-road Semantic Segmentation and Mapping}{section.3}% 12
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Off-line learning}{subsection.3.3}% 13
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Semantic segmentation}{subsection.3.3}% 14
+\BOOKMARK [3][-]{subsubsection.3.3.3}{Semantic mapping}{subsection.3.3}% 15
+\BOOKMARK [1][-]{section.4}{Experimental Results}{}% 16
+\BOOKMARK [2][-]{subsection.4.1}{Dataset}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.2}{Evaluation Metrics}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.3}{Results on Proposed Method}{section.4}% 19
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Feature Distance Measurement}{subsection.4.3}% 20
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Cross Validation and Ablation Study}{subsection.4.3}% 21
+\BOOKMARK [3][-]{subsubsection.4.3.3}{Fine-Grained Semantic Segmentation and Mapping}{subsection.4.3}% 22
+\BOOKMARK [2][-]{subsection.4.4}{Challenges}{section.4}% 23
+\BOOKMARK [1][-]{section.5}{CONCLUSIONS}{}% 24
+\BOOKMARK [1][-]{section*.13}{References}{}% 25
