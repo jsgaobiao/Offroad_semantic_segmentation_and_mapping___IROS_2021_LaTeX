@@ -5,7 +5,7 @@ Di~Feng, Christian Haase-Schuetz, Lars Rosenbaum, Heinz Hertlein, Claudius
   Glaeser, Fabian Timm, Werner Wiesbeck, and Klaus Dietmayer.
 \newblock Deep multi-modal object detection and semantic segmentation for
   autonomous driving: Datasets, methods, and challenges.
-\newblock {\em IEEE Transactions on Intelligent Transportation Systems}, 2020.
+\newblock {\em Transactions on Intelligent Transportation Systems}, 2020.
 
 \bibitem{badue2020self}
 Claudine Badue, R{\^a}nik Guidolini, Raphael~Vivacqua Carneiro, Pedro Azevedo,
@@ -18,28 +18,27 @@ Claudine Badue, R{\^a}nik Guidolini, Raphael~Vivacqua Carneiro, Pedro Azevedo,
 Mennatullah Siam, Sara Elkerdawy, Martin Jagersand, and Senthil Yogamani.
 \newblock Deep semantic segmentation for automated driving: Taxonomy, roadmap
   and challenges.
-\newblock In {\em 2017 IEEE 20th international conference on intelligent
-  transportation systems (ITSC)}, pages 1--8. IEEE, 2017.
+\newblock In {\em International Conference on Intelligent Transportation
+  Systems}, pages 1--8. IEEE, 2017.
 
 \bibitem{wellhausen2019should}
 Lorenz Wellhausen, Alexey Dosovitskiy, Ren{\'e} Ranftl, Krzysztof Walas, Cesar
   Cadena, and Marco Hutter.
 \newblock Where should {I} walk? predicting terrain properties from images via
   self-supervised learning.
-\newblock {\em IEEE Robotics and Automation Letters}, 4(2):1509--1516, 2019.
+\newblock {\em Robotics and Automation Letters}, 4(2):1509--1516, 2019.
 
 \bibitem{thrun2006stanley}
 Sebastian Thrun, Mike Montemerlo, Hendrik Dahlkamp, David Stavens, Andrei Aron,
   James Diebel, Philip Fong, John Gale, Morgan Halpenny, Gabriel Hoffmann,
   et~al.
-\newblock Stanley: The robot that won the darpa grand challenge.
-\newblock {\em Journal of field Robotics}, 23(9):661--692, 2006.
+\newblock Stanley: The robot that won the {DARPA Grand Challenge}.
+\newblock {\em Journal of Field Robotics}, 23(9):661--692, 2006.
 
 \bibitem{zhang2010lidar}
 Wende Zhang.
-\newblock Lidar-based road and road-edge detection.
-\newblock In {\em 2010 IEEE Intelligent Vehicles Symposium}, pages 845--848.
-  IEEE, 2010.
+\newblock {LiDAR}-based road and road-edge detection.
+\newblock In {\em Intelligent Vehicles Symposium}, pages 845--848. IEEE, 2010.
 
 \bibitem{oord2018CPC}
 Aaron van~den Oord, Yazhe Li, and Oriol Vinyals.
@@ -50,40 +49,40 @@ Aaron van~den Oord, Yazhe Li, and Oriol Vinyals.
 Ting Chen, Simon Kornblith, Mohammad Norouzi, and Geoffrey Hinton.
 \newblock A simple framework for contrastive learning of visual
   representations.
-\newblock In {\em International conference on machine learning}, pages
+\newblock In {\em International Conference on Machine Learning}, pages
   1597--1607. PMLR, 2020.
 
 \bibitem{he2020momentum}
 Kaiming He, Haoqi Fan, Yuxin Wu, Saining Xie, and Ross Girshick.
 \newblock Momentum contrast for unsupervised visual representation learning.
-\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
-  Pattern Recognition}, pages 9729--9738, 2020.
+\newblock In {\em Conference on Computer Vision and Pattern Recognition}, pages
+  9729--9738, 2020.
 
 \bibitem{deng2009imagenet}
 Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li~Fei-Fei.
 \newblock {ImageNet}: A large-scale hierarchical image database.
-\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition},
-  pages 248--255. Ieee, 2009.
+\newblock In {\em Conference on Computer Vision and Pattern Recognition}, pages
+  248--255. Ieee, 2009.
 
 \bibitem{kong2009vanishing}
 Hui Kong, Jean-Yves Audibert, and Jean Ponce.
 \newblock Vanishing point detection for road detection.
-\newblock In {\em 2009 ieee conference on computer vision and pattern
-  recognition}, pages 96--103. IEEE, 2009.
+\newblock In {\em Conference on Computer Vision and Pattern Recognition}, pages
+  96--103. IEEE, 2009.
 
 \bibitem{shi2015fast}
 Jinjin Shi, Jinxiang Wang, and Fangfa Fu.
 \newblock Fast and robust vanishing point detection for unstructured road
   following.
-\newblock {\em IEEE Transactions on Intelligent Transportation Systems},
+\newblock {\em Transactions on Intelligent Transportation Systems},
   17(4):970--979, 2015.
 
 \bibitem{zhou2010self}
 Shengyan Zhou and Karl Iagnemma.
 \newblock Self-supervised learning method for unstructured road detection using
   fuzzy support vector machines.
-\newblock In {\em 2010 IEEE/RSJ international conference on intelligent robots
-  and systems}, pages 1183--1189. IEEE, 2010.
+\newblock In {\em International Conference on Intelligent Robots and Systems},
+  pages 1183--1189. IEEE, 2010.
 
 \bibitem{jeong2002vision}
 Hong Jeong, Yuns Oh, Jeong-Ho Park, BS~Koo, and Sang~Wook Lee.
@@ -93,40 +92,40 @@ Hong Jeong, Yuns Oh, Jeong-Ho Park, BS~Koo, and Sang~Wook Lee.
 \bibitem{lu2014hierarchical}
 Keyu Lu, Jian Li, Xiangjing An, and Hangen He.
 \newblock A hierarchical approach for road detection.
-\newblock In {\em 2014 IEEE International Conference on Robotics and Automation
-  (ICRA)}, pages 517--522. IEEE, 2014.
+\newblock In {\em International Conference on Robotics and Automation}, pages
+  517--522. IEEE, 2014.
 
 \bibitem{mei2017scene}
 Jilin Mei, Yufeng Yu, Huijing Zhao, and Hongbin Zha.
 \newblock Scene-adaptive off-road detection using a monocular camera.
-\newblock {\em IEEE Transactions on Intelligent Transportation Systems},
+\newblock {\em Transactions on Intelligent Transportation Systems},
   19(1):242--253, 2017.
 
 \bibitem{alon2006off}
 Yaniv Alon, Andras Ferencz, and Amnon Shashua.
 \newblock Off-road path following using region classification and geometric
   projection constraints.
-\newblock In {\em 2006 IEEE Computer Society Conference on Computer Vision and
-  Pattern Recognition (CVPR'06)}, volume~1, pages 689--696. IEEE, 2006.
+\newblock In {\em Conference on Computer Vision and Pattern Recognition},
+  volume~1, pages 689--696. IEEE, 2006.
 
 \bibitem{wang2009unstructured}
 Jian Wang, Zhong Ji, and Yu-Ting Su.
 \newblock Unstructured road detection using hybrid features.
-\newblock In {\em 2009 International Conference on Machine Learning and
+\newblock In {\em International Conference on Machine Learning and
   Cybernetics}, volume~1, pages 482--486. IEEE, 2009.
 
 \bibitem{long2015fully}
 Jonathan Long, Evan Shelhamer, and Trevor Darrell.
 \newblock Fully convolutional networks for semantic segmentation.
-\newblock In {\em Proceedings of the IEEE conference on computer vision and
-  pattern recognition}, pages 3431--3440, 2015.
+\newblock In {\em Conference on Computer Vision and Pattern Recognition}, pages
+  3431--3440, 2015.
 
 \bibitem{cordts2016cityscapes}
 Marius Cordts, Mohamed Omran, Sebastian Ramos, Timo Rehfeld, Markus Enzweiler,
   Rodrigo Benenson, Uwe Franke, Stefan Roth, and Bernt Schiele.
-\newblock The cityscapes dataset for semantic urban scene understanding.
-\newblock In {\em Proceedings of the IEEE conference on computer vision and
-  pattern recognition}, pages 3213--3223, 2016.
+\newblock The {CityScapes} dataset for semantic urban scene understanding.
+\newblock In {\em Conference on Computer Vision and Pattern Recognition}, pages
+  3213--3223, 2016.
 
 \bibitem{maturana2018real}
 Daniel Maturana, Po-Wei Chou, Masashi Uenoyama, and Sebastian Scherer.
@@ -136,15 +135,15 @@ Daniel Maturana, Po-Wei Chou, Masashi Uenoyama, and Sebastian Scherer.
 \bibitem{suger2015traversability}
 Benjamin Suger, Bastian Steder, and Wolfram Burgard.
 \newblock Traversability analysis for mobile robots in outdoor environments: A
-  semi-supervised learning approach based on 3d-lidar data.
-\newblock In {\em 2015 IEEE International Conference on Robotics and Automation
-  (ICRA)}, pages 3941--3946. IEEE, 2015.
+  semi-supervised learning approach based on {3D-LiDAR} data.
+\newblock In {\em International Conference on Robotics and Automation}, pages
+  3941--3946. IEEE, 2015.
 
 \bibitem{gao2019off}
 Biao Gao, Anran Xu, Yancheng Pan, Xijun Zhao, Wen Yao, and Huijing Zhao.
-\newblock Off-road drivable area extraction using 3d lidar data.
-\newblock In {\em 2019 IEEE Intelligent Vehicles Symposium (IV)}, pages
-  1505--1511. IEEE, 2019.
+\newblock Off-road drivable area extraction using {3D LiDAR} data.
+\newblock In {\em Intelligent Vehicles Symposium}, pages 1505--1511. IEEE,
+  2019.
 
 \bibitem{holder2016road}
 Christopher~J Holder, Toby~P Breckon, and Xiong Wei.
@@ -164,14 +163,14 @@ Suvash Sharma, John~E Ball, Bo~Tang, Daniel~W Carruth, Matthew Doude, and
 Li~Tang, Xiaqing Ding, Huan Yin, Yue Wang, and Rong Xiong.
 \newblock From one to many: Unsupervised traversable area segmentation in
   off-road environment.
-\newblock In {\em 2017 IEEE International Conference on Robotics and
-  Biomimetics (ROBIO)}, pages 787--792. IEEE, 2017.
+\newblock In {\em International Conference on Robotics and Biomimetics}, pages
+  787--792. IEEE, 2017.
 
 \bibitem{zurn2020self}
 Jannik Z{\"u}rn, Wolfram Burgard, and Abhinav Valada.
-\newblock Self-supervised visual terrain{\"{}} classification from unsupervised
+\newblock Self-supervised visual terrain classification from unsupervised
   acoustic feature learning.
-\newblock {\em IEEE Transactions on Robotics}, 2020.
+\newblock {\em Transactions on Robotics}, 2020.
 
 \bibitem{tian2019contrastive}
 Yonglong Tian, Dilip Krishnan, and Phillip Isola.
@@ -186,8 +185,8 @@ Xiangyun Zhao, Raviteja Vemulapalli, Philip Mansfield, Boqing Gong, Bradley
 
 \bibitem{krizhevsky2012imagenet}
 Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
-\newblock Imagenet classification with deep convolutional neural networks.
-\newblock {\em Advances in neural information processing systems},
+\newblock {ImageNet} classification with deep convolutional neural networks.
+\newblock {\em Advances in Neural Information Processing Systems},
   25:1097--1105, 2012.
 
 \bibitem{oord2018representation}
@@ -199,13 +198,13 @@ Aaron van~den Oord, Yazhe Li, and Oriol Vinyals.
 Zhirong Wu, Yuanjun Xiong, Stella~X. Yu, and Dahua Lin.
 \newblock Unsupervised feature learning via non-parametric instance
   discrimination.
-\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
-  Pattern Recognition (CVPR)}, June 2018.
+\newblock In {\em Conference on Computer Vision and Pattern Recognition}, June
+  2018.
 
 \bibitem{rand1971objective}
 William~M Rand.
 \newblock Objective criteria for the evaluation of clustering methods.
-\newblock {\em Journal of the American Statistical association},
+\newblock {\em Journal of the American Statistical Association},
   66(336):846--850, 1971.
 
 \end{thebibliography}

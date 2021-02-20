@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.4)  20 FEB 2021 09:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.4)  20 FEB 2021 15:50
 entering extended mode
 **./root.tex
 (root.tex
@@ -731,10 +731,10 @@ Package rerunfilecheck Info: Checksums for `root.out':
 (rerunfilecheck)             After:  3FF3D6B9FFB63BCCD076D27B0D0A41EF;1792.
  ) 
 Here is how much of TeX's memory you used:
- 9343 strings out of 479618
- 145955 string characters out of 2874897
+ 9342 strings out of 479618
+ 145941 string characters out of 2874897
  469148 words of memory out of 3000000
- 26250 multiletter control sequences out of 15000+200000
+ 26249 multiletter control sequences out of 15000+200000
  445019 words of font info for 114 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,25n,74p,1097b,458s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -753,7 +753,7 @@ m Files/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><D:/Program Files/MiKTeX/font
 s/type1/urw/times/utmb8a.pfb><D:/Program Files/MiKTeX/fonts/type1/urw/times/utm
 bi8a.pfb><D:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><D:/Program 
 Files/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on root.pdf (8 pages, 3315257 bytes).
+Output written on root.pdf (8 pages, 3314242 bytes).
 PDF statistics:
  565 PDF objects out of 1000 (max. 8388607)
  82 named destinations out of 1000 (max. 500000)
