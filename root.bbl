@@ -24,7 +24,7 @@ Mennatullah Siam, Sara Elkerdawy, Martin Jagersand, and Senthil Yogamani.
 \bibitem{wellhausen2019should}
 Lorenz Wellhausen, Alexey Dosovitskiy, Ren{\'e} Ranftl, Krzysztof Walas, Cesar
   Cadena, and Marco Hutter.
-\newblock Where should i walk? predicting terrain properties from images via
+\newblock Where should {I} walk? predicting terrain properties from images via
   self-supervised learning.
 \newblock {\em IEEE Robotics and Automation Letters}, 4(2):1509--1516, 2019.
 
@@ -85,12 +85,6 @@ Shengyan Zhou and Karl Iagnemma.
 \newblock In {\em 2010 IEEE/RSJ international conference on intelligent robots
   and systems}, pages 1183--1189. IEEE, 2010.
 
-\bibitem{ososinski2015automatic}
-Marek Ososinski and Fr{\'e}d{\'e}ric Labrosse.
-\newblock Automatic driving on ill-defined roads: An adaptive,
-  shape-constrained, color-based method.
-\newblock {\em Journal of Field Robotics}, 32(4):504--533, 2015.
-
 \bibitem{jeong2002vision}
 Hong Jeong, Yuns Oh, Jeong-Ho Park, BS~Koo, and Sang~Wook Lee.
 \newblock Vision-based adaptive and recursive tracking of unpaved roads.
@@ -101,13 +95,6 @@ Keyu Lu, Jian Li, Xiangjing An, and Hangen He.
 \newblock A hierarchical approach for road detection.
 \newblock In {\em 2014 IEEE International Conference on Robotics and Automation
   (ICRA)}, pages 517--522. IEEE, 2014.
-
-\bibitem{dahlkamp2006self}
-Hendrik Dahlkamp, Adrian Kaehler, David Stavens, Sebastian Thrun, and Gary~R
-  Bradski.
-\newblock Self-supervised monocular road detection in desert terrain.
-\newblock In {\em Robotics: science and systems}, volume~38. Philadelphia,
-  2006.
 
 \bibitem{mei2017scene}
 Jilin Mei, Yufeng Yu, Huijing Zhao, and Hongbin Zha.
@@ -141,6 +128,11 @@ Marius Cordts, Mohamed Omran, Sebastian Ramos, Timo Rehfeld, Markus Enzweiler,
 \newblock In {\em Proceedings of the IEEE conference on computer vision and
   pattern recognition}, pages 3213--3223, 2016.
 
+\bibitem{maturana2018real}
+Daniel Maturana, Po-Wei Chou, Masashi Uenoyama, and Sebastian Scherer.
+\newblock Real-time semantic mapping for autonomous off-road navigation.
+\newblock In {\em Field and Service Robotics}, pages 335--350. Springer, 2018.
+
 \bibitem{suger2015traversability}
 Benjamin Suger, Bastian Steder, and Wolfram Burgard.
 \newblock Traversability analysis for mobile robots in outdoor environments: A
@@ -153,6 +145,13 @@ Biao Gao, Anran Xu, Yancheng Pan, Xijun Zhao, Wen Yao, and Huijing Zhao.
 \newblock Off-road drivable area extraction using 3d lidar data.
 \newblock In {\em 2019 IEEE Intelligent Vehicles Symposium (IV)}, pages
   1505--1511. IEEE, 2019.
+
+\bibitem{holder2016road}
+Christopher~J Holder, Toby~P Breckon, and Xiong Wei.
+\newblock From on-road to off: transfer learning within a deep convolutional
+  neural network for segmentation and classification of off-road scenes.
+\newblock In {\em European Conference on Computer Vision}, pages 149--162.
+  Springer, 2016.
 
 \bibitem{sharma2019semantic}
 Suvash Sharma, John~E Ball, Bo~Tang, Daniel~W Carruth, Matthew Doude, and
@@ -173,6 +172,17 @@ Jannik Z{\"u}rn, Wolfram Burgard, and Abhinav Valada.
 \newblock Self-supervised visual terrain{\"{}} classification from unsupervised
   acoustic feature learning.
 \newblock {\em IEEE Transactions on Robotics}, 2020.
+
+\bibitem{tian2019contrastive}
+Yonglong Tian, Dilip Krishnan, and Phillip Isola.
+\newblock Contrastive multiview coding.
+\newblock {\em arXiv preprint arXiv:1906.05849}, 2019.
+
+\bibitem{zhao2020contrastive}
+Xiangyun Zhao, Raviteja Vemulapalli, Philip Mansfield, Boqing Gong, Bradley
+  Green, Lior Shapira, and Ying Wu.
+\newblock Contrastive learning for label-efficient semantic segmentation.
+\newblock {\em arXiv preprint arXiv:2012.06985}, 2020.
 
 \bibitem{krizhevsky2012imagenet}
 Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.

@@ -33,10 +33,8 @@
 \citation{kong2009vanishing}
 \citation{shi2015fast}
 \citation{zhou2010self}
-\citation{ososinski2015automatic}
 \citation{jeong2002vision}
 \citation{lu2014hierarchical}
-\citation{dahlkamp2006self}
 \citation{mei2017scene}
 \citation{alon2006off}
 \citation{wang2009unstructured}
@@ -44,15 +42,24 @@
 \citation{wang2009unstructured}
 \citation{long2015fully}
 \citation{cordts2016cityscapes}
+\citation{maturana2018real}
 \citation{suger2015traversability}
 \citation{gao2019off}
+\citation{holder2016road}
 \citation{sharma2019semantic}
 \citation{tang2017one}
-\citation{suger2015traversability}
 \citation{gao2019off}
 \citation{zurn2020self}
-\citation{krizhevsky2012imagenet}
-\citation{oord2018representation}
+\citation{wellhausen2019should}
+\citation{holder2016road}
+\citation{sharma2019semantic}
+\citation{oord2018CPC}
+\citation{chen2020simple}
+\citation{he2020momentum}
+\citation{oord2018CPC}
+\citation{tian2019contrastive}
+\citation{zhao2020contrastive}
+\citation{zhao2020contrastive}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Related Works}{2}{section.2}\protected@file@percent }
 \newlabel{related_works}{{II}{2}{Related Works}{section.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {II-A}Traditional Methods}{2}{subsection.2.1}\protected@file@percent }
@@ -61,23 +68,25 @@
 \@writefile{toc}{\contentsline {section}{\numberline {III}Methodology}{2}{section.3}\protected@file@percent }
 \newlabel{methodology}{{III}{2}{Methodology}{section.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {III-A}Problem Formulation}{2}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {III-B}Feature Representation through Contrastive Learning}{2}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {III-B.1}Sampling strategy}{2}{subsubsection.3.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {III-B.2}Composing sample data}{2}{subsubsection.3.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {III-B.3}Network Design and Loss Function}{2}{subsubsection.3.2.3}\protected@file@percent }
+\citation{krizhevsky2012imagenet}
+\citation{oord2018representation}
 \citation{Wu_2018_CVPR}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The proposed pipeline for fine-grained off-road semantic segmentation and mapping via contrastive learning.\relax }}{3}{figure.caption.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:pipeline}{{2}{3}{The proposed pipeline for fine-grained off-road semantic segmentation and mapping via contrastive learning.\relax }{figure.caption.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Illustration of (a) neighborhood sampling strategy, and (b) how to add background information with the foreground image patch.\relax }}{3}{figure.caption.2}\protected@file@percent }
 \newlabel{fig:dataaug}{{3}{3}{Illustration of (a) neighborhood sampling strategy, and (b) how to add background information with the foreground image patch.\relax }{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {III-B}Feature Representation through Contrastive Learning}{3}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {III-B.1}Sampling strategy}{3}{subsubsection.3.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {III-B.2}Composing sample data}{3}{subsubsection.3.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {III-B.3}Network Design and Loss Function}{3}{subsubsection.3.2.3}\protected@file@percent }
 \newlabel{loss}{{1}{3}{Network Design and Loss Function}{equation.3.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {III-C}Off-road Semantic Segmentation and Mapping}{3}{subsection.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {III-C.1}Off-line learning}{3}{subsubsection.3.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {III-C.2}Semantic segmentation}{3}{subsubsection.3.3.2}\protected@file@percent }
-\newlabel{3_SM}{{III-C.3}{3}{Semantic mapping}{subsubsection.3.3.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {III-C.3}Semantic mapping}{3}{subsubsection.3.3.3}\protected@file@percent }
 \citation{rand1971objective}
+\@writefile{toc}{\contentsline {subsection}{\numberline {III-C}Off-road Semantic Segmentation and Mapping}{4}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {III-C.1}Off-line learning}{4}{subsubsection.3.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {III-C.2}Semantic segmentation}{4}{subsubsection.3.3.2}\protected@file@percent }
+\newlabel{3_SM}{{III-C.3}{4}{Semantic mapping}{subsubsection.3.3.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {III-C.3}Semantic mapping}{4}{subsubsection.3.3.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Experimental Results}{4}{section.4}\protected@file@percent }
 \newlabel{exp}{{IV}{4}{Experimental Results}{section.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {IV-A}Dataset}{4}{subsection.4.1}\protected@file@percent }
@@ -87,22 +96,27 @@
 \newlabel{fig:dataset}{{4}{4}{Typical scenes in three datasets, which represent different off-road environments.\relax }{figure.caption.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {IV-B}Evaluation Metrics}{4}{subsection.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {IV-C}Results on Proposed Method}{4}{subsection.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {IV-C.1}Feature Distance Measurement}{4}{subsubsection.4.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {IV-C.2}Cross Validation and Ablation Study}{4}{subsubsection.4.3.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Visualization of feature distances of query anchor (A) to its positive (P) and negative (N) samples. Query anchors are circled by yellow rings. P/N is according to human annotated anchor labels, and numbers in parentheses measure samples' similarity to the query anchor.\relax }}{5}{figure.caption.5}\protected@file@percent }
 \newlabel{fig:anchor_dis}{{5}{5}{Visualization of feature distances of query anchor (A) to its positive (P) and negative (N) samples. Query anchors are circled by yellow rings. P/N is according to human annotated anchor labels, and numbers in parentheses measure samples' similarity to the query anchor.\relax }{figure.caption.5}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Cross Validation Results ($\mathcal  {R}$) on Different Datasets\relax }}{5}{table.caption.6}\protected@file@percent }
 \newlabel{tab:cross_eval}{{II}{5}{Cross Validation Results ($\mathcal {R}$) on Different Datasets\relax }{table.caption.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {IV-C.1}Feature Distance Measurement}{5}{subsubsection.4.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {IV-C.2}Cross Validation and Ablation Study}{5}{subsubsection.4.3.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Average $\mathcal  {R}$ of models under different clustering number $\mathcal  {K}$.\relax }}{5}{figure.caption.8}\protected@file@percent }
 \newlabel{fig:kmeans_exp}{{6}{5}{Average $\mathcal {R}$ of models under different clustering number $\mathcal {K}$.\relax }{figure.caption.8}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {IV-C.3}Fine-Grained Semantic Segmentation and Mapping}{5}{subsubsection.4.3.3}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Some cases of fine-grained semantic segmentation.\relax }}{6}{figure.caption.9}\protected@file@percent }
 \newlabel{fig:semantic_segmentation}{{7}{6}{Some cases of fine-grained semantic segmentation.\relax }{figure.caption.9}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Case study of fine-grained semantic map and confidence map, compared with coarse-grained road extraction results. (a) video image. (b) coarse-grained segmentation. (c) coarse-grained bird's-eye-view semantic map. (d) fine-grained semantic segmentation projected by point clouds. (e) fine-grained bird's-eye-view semantic map. (f) confidence map projected on camera-view, the whiter the higher confidence. (g) bird's-eye-view confidence map.\relax }}{6}{figure.caption.10}\protected@file@percent }
 \newlabel{fig:semantic_mapping}{{8}{6}{Case study of fine-grained semantic map and confidence map, compared with coarse-grained road extraction results. (a) video image. (b) coarse-grained segmentation. (c) coarse-grained bird's-eye-view semantic map. (d) fine-grained semantic segmentation projected by point clouds. (e) fine-grained bird's-eye-view semantic map. (f) confidence map projected on camera-view, the whiter the higher confidence. (g) bird's-eye-view confidence map.\relax }{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {IV-C.3}Fine-Grained Semantic Segmentation and Mapping}{6}{subsubsection.4.3.3}\protected@file@percent }
 \bibstyle{unsrt}
 \bibdata{root}
 \bibcite{feng2020deep}{1}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Traversability analysis of semantic clusters based on point clouds. (a-c) boxplots of points average height, indicate height distribution of different categories. (d-f) boxplots of points height variance, indicate surface flatness and traversability cost. \relax }}{7}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:lidar_analysis}{{9}{7}{Traversability analysis of semantic clusters based on point clouds. (a-c) boxplots of points average height, indicate height distribution of different categories. (d-f) boxplots of points height variance, indicate surface flatness and traversability cost. \relax }{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {IV-D}Challenges}{7}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {V}CONCLUSIONS}{7}{section.5}\protected@file@percent }
+\newlabel{conclusions}{{V}{7}{CONCLUSIONS}{section.5}{}}
 \bibcite{badue2020self}{2}
 \bibcite{siam2017deep}{3}
 \bibcite{wellhausen2019should}{4}
@@ -112,33 +126,30 @@
 \bibcite{chen2020simple}{8}
 \bibcite{he2020momentum}{9}
 \bibcite{deng2009imagenet}{10}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Traversability analysis of semantic clusters based on point clouds. (a-c) boxplots of points average height, indicate height distribution of different categories. (d-f) boxplots of points height variance, indicate surface flatness and traversability cost. \relax }}{7}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:lidar_analysis}{{9}{7}{Traversability analysis of semantic clusters based on point clouds. (a-c) boxplots of points average height, indicate height distribution of different categories. (d-f) boxplots of points height variance, indicate surface flatness and traversability cost. \relax }{figure.caption.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {IV-D}Challenges}{7}{subsection.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {V}CONCLUSIONS}{7}{section.5}\protected@file@percent }
-\newlabel{conclusions}{{V}{7}{CONCLUSIONS}{section.5}{}}
-\@writefile{toc}{\contentsline {section}{References}{7}{section*.13}\protected@file@percent }
 \bibcite{kong2009vanishing}{11}
 \bibcite{shi2015fast}{12}
 \bibcite{zhou2010self}{13}
-\bibcite{ososinski2015automatic}{14}
-\bibcite{jeong2002vision}{15}
-\bibcite{lu2014hierarchical}{16}
-\bibcite{dahlkamp2006self}{17}
-\bibcite{mei2017scene}{18}
-\bibcite{alon2006off}{19}
-\bibcite{wang2009unstructured}{20}
-\bibcite{long2015fully}{21}
-\bibcite{cordts2016cityscapes}{22}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Challenging case: when meeting unseen semantic categories.\relax }}{8}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:challenges}{{10}{8}{Challenging case: when meeting unseen semantic categories.\relax }{figure.caption.12}{}}
-\bibcite{suger2015traversability}{23}
-\bibcite{gao2019off}{24}
+\bibcite{jeong2002vision}{14}
+\bibcite{lu2014hierarchical}{15}
+\bibcite{mei2017scene}{16}
+\bibcite{alon2006off}{17}
+\bibcite{wang2009unstructured}{18}
+\bibcite{long2015fully}{19}
+\bibcite{cordts2016cityscapes}{20}
+\bibcite{maturana2018real}{21}
+\bibcite{suger2015traversability}{22}
+\bibcite{gao2019off}{23}
+\bibcite{holder2016road}{24}
 \bibcite{sharma2019semantic}{25}
 \bibcite{tang2017one}{26}
 \bibcite{zurn2020self}{27}
-\bibcite{krizhevsky2012imagenet}{28}
-\bibcite{oord2018representation}{29}
-\bibcite{Wu_2018_CVPR}{30}
-\bibcite{rand1971objective}{31}
-\gdef \@abspage@last{9}
+\bibcite{tian2019contrastive}{28}
+\bibcite{zhao2020contrastive}{29}
+\bibcite{krizhevsky2012imagenet}{30}
+\bibcite{oord2018representation}{31}
+\bibcite{Wu_2018_CVPR}{32}
+\bibcite{rand1971objective}{33}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Challenging case: when meeting unseen semantic categories.\relax }}{8}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:challenges}{{10}{8}{Challenging case: when meeting unseen semantic categories.\relax }{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {section}{References}{8}{section*.13}\protected@file@percent }
+\gdef \@abspage@last{8}

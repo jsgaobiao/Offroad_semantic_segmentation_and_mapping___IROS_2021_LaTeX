@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.4)  19 FEB 2021 12:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.4)  20 FEB 2021 09:45
 entering extended mode
 **./root.tex
 (root.tex
@@ -459,22 +459,22 @@ File: l3backend-pdftex.def 2020-01-29 L3 backend support: PDF output (pdfTeX)
 ) (root.aux)
 \openout1 = `root.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
 ("D:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count297
@@ -497,7 +497,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: threeparttable package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 49.
+Package hyperref Info: Link coloring ON on input line 43.
 
 ("D:\Program Files\MiKTeX\tex/latex/hyperref\nameref.sty"
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -510,21 +510,21 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count303
 )
-LaTeX Info: Redefining \ref on input line 49.
-LaTeX Info: Redefining \pageref on input line 49.
-LaTeX Info: Redefining \nameref on input line 49.
+LaTeX Info: Redefining \ref on input line 43.
+LaTeX Info: Redefining \pageref on input line 43.
+LaTeX Info: Redefining \nameref on input line 43.
 
 (root.out) (root.out)
 \@outlinefile=\write3
 \openout3 = `root.out'.
 
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 65.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 65.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 59.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 59.
 
  ("D:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 65.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 59.
 
 
 ("D:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd"
@@ -536,15 +536,15 @@ pdfTeX warning: pdflatex.exe (file ./problem_def.pdf): PDF inclusion: found PDF
 <problem_def.pdf, id=103, 2873.69606pt x 938.90778pt>
 File: problem_def.pdf Graphic file (type pdf)
 <use problem_def.pdf>
-Package pdftex.def Info: problem_def.pdf  used on input line 65.
+Package pdftex.def Info: problem_def.pdf  used on input line 59.
 (pdftex.def)             Requested size: 505.89pt x 165.28552pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 65.
+(caption)                particular \caption on input line 59.
 See the caption package documentation for explanation.
 
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 6
-5.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 5
+9.
 ("D:\Program Files\MiKTeX\tex/latex/psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -556,7 +556,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  <./problem_def.pdf>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 124.
+               Default added (so using `tbp') on input line 126.
 
 
 
@@ -565,11 +565,11 @@ rsion <1.7>, but at most version <1.5> allowed
 <pipeline.pdf, id=141, 2446.9418pt x 1081.1592pt>
 File: pipeline.pdf Graphic file (type pdf)
 <use pipeline.pdf>
-Package pdftex.def Info: pipeline.pdf  used on input line 127.
+Package pdftex.def Info: pipeline.pdf  used on input line 129.
 (pdftex.def)             Requested size: 505.89pt x 223.51974pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 146.
+               Default added (so using `tbp') on input line 147.
 
 
 
@@ -578,10 +578,10 @@ sion <1.7>, but at most version <1.5> allowed
 <dataaug.pdf, id=142, 1052.8535pt x 384.11504pt>
 File: dataaug.pdf Graphic file (type pdf)
 <use dataaug.pdf>
-Package pdftex.def Info: dataaug.pdf  used on input line 149.
+Package pdftex.def Info: dataaug.pdf  used on input line 150.
 (pdftex.def)             Requested size: 247.42061pt x 90.26704pt.
 
-Overfull \hbox (1.7025pt too wide) in paragraph at lines 149--150
+Overfull \hbox (1.7025pt too wide) in paragraph at lines 150--151
  [][] 
  []
 
@@ -591,16 +591,25 @@ pdfTeX warning: pdflatex.exe (file ./dataaug.pdf): PDF inclusion: multiple pdfs
  with page group included in a single page
 >]
 
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 210.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 226.
+
+
+
 pdfTeX warning: pdflatex.exe (file ./dataset.pdf): PDF inclusion: found PDF ver
 sion <1.7>, but at most version <1.5> allowed
-<dataset.pdf, id=266, 853.50871pt x 398.32814pt>
+<dataset.pdf, id=265, 853.50871pt x 398.32814pt>
 File: dataset.pdf Graphic file (type pdf)
 <use dataset.pdf>
-Package pdftex.def Info: dataset.pdf  used on input line 228.
+Package pdftex.def Info: dataset.pdf  used on input line 229.
 (pdftex.def)             Requested size: 238.9808pt x 111.53111pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 240.
+               Default added (so using `tbp') on input line 239.
 
 
 
@@ -609,92 +618,97 @@ version <1.7>, but at most version <1.5> allowed
 <anchor_dis.pdf, id=267, 1240.51456pt x 398.32814pt>
 File: anchor_dis.pdf Graphic file (type pdf)
 <use anchor_dis.pdf>
-Package pdftex.def Info: anchor_dis.pdf  used on input line 243.
-(pdftex.def)             Requested size: 496.19704pt x 159.32843pt.
+Package pdftex.def Info: anchor_dis.pdf  used on input line 242.
+(pdftex.def)             Requested size: 480.59395pt x 154.31409pt.
+[4 <./dataset.pdf>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 290.
+               Default added (so using `tbp') on input line 295.
 
 
 
 pdfTeX warning: pdflatex.exe (file ./kmeans_exp.pdf): PDF inclusion: found PDF 
 version <1.7>, but at most version <1.5> allowed
-<kmeans_exp.pdf, id=270, 876.3942pt x 469.51411pt>
+<kmeans_exp.pdf, id=291, 876.3942pt x 469.51411pt>
 File: kmeans_exp.pdf Graphic file (type pdf)
 <use kmeans_exp.pdf>
-Package pdftex.def Info: kmeans_exp.pdf  used on input line 293.
-(pdftex.def)             Requested size: 245.3887pt x 131.46304pt.
+Package pdftex.def Info: kmeans_exp.pdf  used on input line 298.
+(pdftex.def)             Requested size: 219.098pt x 117.37823pt.
+
+Underfull \vbox (badness 1067) has occurred while \output is active []
+
+
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 310.
+               Default added (so using `tbp') on input line 315.
 
 
 
 pdfTeX warning: pdflatex.exe (file ./semantic_segmentation.pdf): PDF inclusion:
  found PDF version <1.7>, but at most version <1.5> allowed
-<semantic_segmentation.pdf, id=272, 1303.14857pt x 384.11504pt>
+<semantic_segmentation.pdf, id=293, 1303.14857pt x 384.11504pt>
 File: semantic_segmentation.pdf Graphic file (type pdf)
 <use semantic_segmentation.pdf>
-Package pdftex.def Info: semantic_segmentation.pdf  used on input line 313.
-(pdftex.def)             Requested size: 480.59395pt x 141.6573pt.
-[4 <./dataset.pdf>]
-Underfull \vbox (badness 3769) has occurred while \output is active []
-
-
+Package pdftex.def Info: semantic_segmentation.pdf  used on input line 318.
+(pdftex.def)             Requested size: 470.47398pt x 138.674pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 322.
+               Default added (so using `tbp') on input line 325.
 
 
 
 pdfTeX warning: pdflatex.exe (file ./semantic_mapping.pdf): PDF inclusion: foun
 d PDF version <1.7>, but at most version <1.5> allowed
-<semantic_mapping.pdf, id=298, 1280.38347pt x 853.50871pt>
+<semantic_mapping.pdf, id=294, 1280.38347pt x 853.50871pt>
 File: semantic_mapping.pdf Graphic file (type pdf)
 <use semantic_mapping.pdf>
-Package pdftex.def Info: semantic_mapping.pdf  used on input line 325.
-(pdftex.def)             Requested size: 505.89pt x 337.2169pt.
+Package pdftex.def Info: semantic_mapping.pdf  used on input line 327.
+(pdftex.def)             Requested size: 480.59395pt x 320.36452pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5 <./anchor_dis.pdf> <./kmeans_exp.pdf
+
+pdfTeX warning: pdflatex.exe (file ./kmeans_exp.pdf): PDF inclusion: multiple p
+dfs with page group included in a single page
+>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 338.
+               Default added (so using `tbp') on input line 344.
 
 
 
 pdfTeX warning: pdflatex.exe (file ./lidar_analysis.pdf): PDF inclusion: found 
 PDF version <1.7>, but at most version <1.5> allowed
-<lidar_analysis.pdf, id=299, 1138.13205pt x 426.8748pt>
+<lidar_analysis.pdf, id=341, 1138.13205pt x 426.8748pt>
 File: lidar_analysis.pdf Graphic file (type pdf)
 <use lidar_analysis.pdf>
-Package pdftex.def Info: lidar_analysis.pdf  used on input line 341.
+Package pdftex.def Info: lidar_analysis.pdf  used on input line 347.
 (pdftex.def)             Requested size: 505.89pt x 189.74048pt.
-[5 <./anchor_dis.pdf> <./kmeans_exp.pdf
-
-pdfTeX warning: pdflatex.exe (file ./kmeans_exp.pdf): PDF inclusion: multiple p
-dfs with page group included in a single page
->] [6 <./semantic_segmentation.pdf> <./semantic_mapping.pdf
+[6 <./semantic_segmentation.pdf> <./semantic_mapping.pdf
 
 pdfTeX warning: pdflatex.exe (file ./semantic_mapping.pdf): PDF inclusion: mult
 iple pdfs with page group included in a single page
 >]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 355.
+               Default added (so using `tbp') on input line 360.
 
 
 
 pdfTeX warning: pdflatex.exe (file ./challenges.pdf): PDF inclusion: found PDF 
 version <1.7>, but at most version <1.5> allowed
-<challenges.pdf, id=407, 963.6pt x 184.89075pt>
+<challenges.pdf, id=406, 963.6pt x 184.89075pt>
 File: challenges.pdf Graphic file (type pdf)
 <use challenges.pdf>
-Package pdftex.def Info: challenges.pdf  used on input line 358.
-(pdftex.def)             Requested size: 505.89pt x 97.06625pt.
-(root.bbl
+Package pdftex.def Info: challenges.pdf  used on input line 362.
+(pdftex.def)             Requested size: 455.2979pt x 87.3585pt.
+(root.bbl [7 <./lidar_analysis.pdf>]
 Underfull \hbox (badness 1859) in paragraph at lines 32--37
 []\OT1/ptm/m/n/8 Sebastian Thrun, Mike Mon-te-merlo, Hen-drik Dahlkamp, David
  []
 
-[7 <./lidar_analysis.pdf>] [8 <./challenges.pdf>])
+)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -706,9 +720,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the US letter (8.5in X 11in) paper size.
 
-[9
-
-] (root.aux)
+[8 <./challenges.pdf>] (root.aux)
 
 Package rerunfilecheck Warning: File `root.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -719,13 +731,13 @@ Package rerunfilecheck Info: Checksums for `root.out':
 (rerunfilecheck)             After:  3FF3D6B9FFB63BCCD076D27B0D0A41EF;1792.
  ) 
 Here is how much of TeX's memory you used:
- 9340 strings out of 479618
- 145913 string characters out of 2874897
- 469140 words of memory out of 3000000
- 26248 multiletter control sequences out of 15000+200000
+ 9343 strings out of 479618
+ 145955 string characters out of 2874897
+ 469148 words of memory out of 3000000
+ 26250 multiletter control sequences out of 15000+200000
  445019 words of font info for 114 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,25n,74p,1097b,456s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 71i,25n,74p,1097b,458s stack positions out of 5000i,500n,10000p,200000b,50000s
 {D:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc}<D:/Program Files/MiKTeX
 /fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files/MiKTeX/fonts/type1
 /public/amsfonts/cm/cmmi10.pfb><D:/Program Files/MiKTeX/fonts/type1/public/amsf
@@ -741,9 +753,9 @@ m Files/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><D:/Program Files/MiKTeX/font
 s/type1/urw/times/utmb8a.pfb><D:/Program Files/MiKTeX/fonts/type1/urw/times/utm
 bi8a.pfb><D:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><D:/Program 
 Files/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on root.pdf (9 pages, 3311546 bytes).
+Output written on root.pdf (8 pages, 3315257 bytes).
 PDF statistics:
- 567 PDF objects out of 1000 (max. 8388607)
- 81 named destinations out of 1000 (max. 500000)
+ 565 PDF objects out of 1000 (max. 8388607)
+ 82 named destinations out of 1000 (max. 500000)
  251 words of extra memory for PDF output out of 10000 (max. 10000000)
 
