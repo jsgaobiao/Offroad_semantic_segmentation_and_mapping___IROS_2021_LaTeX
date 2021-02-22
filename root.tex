@@ -11,7 +11,6 @@
 %\usepackage{ctex}
 
 \usepackage[OT1]{fontenc} 
-%\usepackage{cite}
 \usepackage{graphicx} % for pdf, bitmapped graphics files
 \usepackage{multirow}
 \usepackage{colortbl}
@@ -25,8 +24,14 @@
 \usepackage{float}
 \usepackage{caption}
 \usepackage{threeparttable}
-\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+\usepackage{cite}
+\makeatletter
+\let\NAT@parse\undefined
+\makeatother
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=black]{hyperref}
 \setlength{\textfloatsep}{5pt}
+\tolerance=10000
+\hbadness=10000
 
 \title{\LARGE \bf
 Fine-Grained Off-Road Semantic Segmentation and Mapping via Contrastive Learning
@@ -69,59 +74,60 @@ To address these challenges, this work proposes a fine-grained off-road semantic
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 %近年来，无人驾驶技术迅猛发展。驾驶场景的语义理解，是无人车进行有效决策规划和自主行驶的前提。目前，面向城市场景的语义理解研究非常丰富。然而，越野场景以自然物体为主、缺少结构化特征的属性，使得这一问题的定义不够明确。
-Recent years, a considerable development has grown up around the theme of intelligent vehicles~\cite{feng2020deep}. Driving scene understanding plays a critical role in the preconditions of decision planning and self-driving~\cite{badue2020self}. For the moment, a considerable amount of studies for urban scenes has been published~\cite{siam2017deep}. However, the off-road environment mainly consists of natural objects and lacks structured features, leading to ambiguous definition of this problem.
-%不同类型的无人平台通行能力不同，细粒度的分类描述了不同的通行代价。比如图1所示的场景，如何提取无人平台可行驶的区域？如何评价不同区域的通行代价？回答这些问题，都需要对场景细粒度的语义理解。但是，越野场景的特殊性使这些问题至今仍缺乏明确的定义和公认的标准。
-Different self-driving platforms have diverse trafficability, while the fine-grained semantic understanding could help to distinguish driving areas with diverse traversability cost. When facing off-road scenarios like Fig.~\ref{fig:problem_def}(a), how to extract appropriate drivable area for self-driving platforms? How to evaluate traversability cost of different regions? To answer these questions, fine-grained semantic understanding is in great request~\cite{wellhausen2019should}. However, the particularity of off-road environment results in lack of clear definition and widely recognized standards.
+Mobile robotic and autonomous driving techniques have been witnessed of tremendous progress in recent years~\cite{feng2020deep}. Driving scene understanding plays a vital role as a prerequisite for the decision making and planning of a robot to traverse in complex environment~\cite{badue2020self}.
+Nowadays researches are mainly oriented to the applications at structural scenes such as indoor, parking lots, urban streets, highways, etc.~\cite{siam2017deep},
+whereas researches on understanding off-road environments are rare.
+Off-road environment is unstructured, dominated by natural objects, lacking artificial features, and its terrain conditions are various and complex.
+One of the fundamental techniques of an off-road robot is to detect safe region (hereinafter called {\it off-roads}) to traverse, which has also been termed as traversable surface~\cite{zhou2012self}, drivable corridor~\cite{nefian2006detection}, etc., in literature.
+Comparing with the roads in structured environments, where functional attribute is clearly defined using artificial features such as pavement, barrier and markings,
+off-roads are ill-defined~\cite{ososinski2015automatic}. 
 
-%\textbf{已有相关的研究}可以分为传统方法和基于深度学习的方法
-%\textbf{传统方法}：通常基于几何/视觉特征提取场景语义[ref]，但是需要依赖人工定义的特征和经验参数，精度和性能有限；
-%\textbf{深度学习方法}：借助深度网络提取更强的特征表达[ref]，但是对监督样本的需求很大; 越野场景中，由于没有明确的问题定义，导致细粒度的人工标注非常困难。
-%\textbf{对比学习}: 近年在视觉领域有很多研究，其算法优势是在无监督的情况下，可以学得高效的特征提取，并支撑ImageNet等语义类别粒度非常细致的图像分类任务。
+Early methods of off-roads detection are usually developed by assuming color, texture, boundary of the target, where rule-based methods of extracting vanishing point and subsequently road boundaries~\cite{kong2009vanishing}\cite{shi2015fast}, and segmentation-based methods of extracting continuous regions based on certain road models are developed~\cite{alon2006off}\cite{wang2009unstructured}.
+These methods are called {\it coarse-grained} ones as the problem is formulated as a binary classification, e.g. labelling each image pixel to {\it road} or {\it non-road}.
+As illustrated in Fig. \ref{fig:problem_def}(b-c), such methods may fail to detect any region to traverse at tough terrains or extract too wide region that lacks of efficiency in prompting the best choice at open area.
+Moreover, the mechanical performance of off-road robots can be very different, leading to different definition and selection of safe regions to traverse.
+Understanding scenes with find-grained labels are needed for off-road robots~\cite{wellhausen2019should}.
+On the other hand, deep learning methods have been studied in recent years~\cite{rateke2019passive}. 
+Semantic segmentation using deep learning techniques infers scenes at pixel- or point-levels~\cite{long2015fully}, where large-scale datasets such as Cityscapes~\cite{cordts2016cityscapes}, SemanticKITTI~\cite{behley2019semantickitti} with fine-grained labels and massive annotations are needed.
+There is no such dataset at off-road scenes. How to define fine-grained labels to achieve meaningful scene understanding for a robot to traverse off-roads is still an open question.  
 
-Existing researches can be classified as traditional methods and deep learning methods.
-Traditional methods~\cite{thrun2006stanley}\cite{zhang2010lidar} mainly make use of geometrical and visual features to extract semantic meanings, but usually depend on manual defined features and empirical parameters, limiting its performance. As shown in Fig.~\ref{fig:problem_def}(b-c), with uniform parameters, the drivable area is acceptable for the easy case, but too wide to provide human preferred area of the hard case, which is powerless for further meticulous motion planning. Expected fine-grained semantic segmentation and mapping as shown in Fig.~\ref{fig:problem_def}(d-e) could extract different semantic regions in both scenes, which improves the traversability analysis ability for off-road driving.
-Deep learning methods~\cite{siam2017deep} depend on deep networks to obtain better feature representations, but rely heavily on massive annotated data. In off-road environments, the ambiguous problem definition leads to difficulty and scarcity of human annotations.
-Several attempts about contrastive learning~\cite{oord2018CPC}\cite{chen2020simple}\cite{he2020momentum} have been made in computer vision researches, which can learn effective feature representations through unsupervised pipeline. It has been proved to support fine-grained image classification tasks in large-scale datasets like ImageNet~\cite{deng2009imagenet}. The contrastive learning pipeline can learn discriminative representations without relying on fine semantic annotations, which is suitable for ambiguous definition and annotating challenges in off-road scenes.
-
-%为了解决越野场景细粒度语义理解面临的困难（定义不明确、且缺少细粒度标注数据），本文提出了一个基于对比学习的面向越野环境细粒度语义聚类的方法。
-%相比传统方法，我们利用对比学习自动地提取特征表达
-%同时，仅需要少量简单的锚点标注，就可以得到细粒度的语义聚类结果。有效缓解了深度网络对细粒度人工标注的需求。
-%我们通过......的实验证明了该方法的有效性.
-To solve the challenges in fine-grained off-road semantic segmentation and mapping, i.e. ambiguous problem definition and the scarcity of elaborate annotated datasets, this work proposed a fine-grained off-road semantic segmentation and mapping method based on contrastive learning techniques. Compared with traditional methods, the proposed framework can automatically learn feature representations through contrastive learning. Meanwhile, only a small number of anchor annotations are required to get fine-grained semantic segmentation results, which significantly reduce the deep network's demand of laborious human annotations. The experimental results prove the validity of our proposed method, and show its potential in applications for off-road environments.
+This research proposes a contrastive learning method to achieve fine-grained semantic segmentation and mapping of off-road scenes as shown in Fig. \ref{fig:problem_def}(d-e).
+It is difficult to define fine-grained categories that are generalized at diverse off-road scenes and it is further hard for a human operator to assign fine-grained labels to each image pixel, where the definitions could be very ambiguous at natural scenes. However, it is not difficult for a human operator to annotate images by sparse anchor patches as illustrated in Fig. \ref{fig:pipeline} to indicate the regions with different semantic attributes on their traversability. Inspired by the impressive progress and the promising results of contrastive learning~\cite{oord2018CPC}\cite{chen2020simple}\cite{he2020momentum}, this research learns a feature representation to discriminate regions with different semantic attributes using contrastive learning, which is used to develop a method of find-grained semantic segmentation and mapping for off-road applications.
+Experiments are conducted using our off-road dataset including over $12,000$ frames and 3 subsets with diverse off-road scenes. With less than training 100 frames, our method can achieve nearly 90\% anchor accuracy on test sets in cross-scene validation. The fine-grained results are further demonstrated by additional LiDAR data analysis.
+The experimental results prove the validity of our proposed method, and show its potential in applications for off-road environments.
 
 %本文结构如下…
 This paper is organized as follows. First, the related works
 are introduced in Section~\ref{related_works}. Section~\ref{methodology} presents the proposed methodology in detail. Section~\ref{exp} shows experimental results. Finally, we draw conclusions in Section~\ref{conclusions}.
 
 \section{Related Works} \label{related_works}
-\subsection{Traditional Methods}
-Traditional methods mainly make use of geometrical and visual features to extract semantic meanings. Meanwhile, previous research for off-road environments are mostly coarse-grained understanding that focuses on road detection, which can be broadly divided into rule-base and segmentation-based methods.
+\subsection{Rule/Segmentation-based Methods}
+Rule/segmentation-based methods are mainly developed by assuming color, texture, boundary of the target region, and these researches are mostly coarse-grained understanding that formulate the problem as a binary classification. They can be broadly divided into rule-base and segmentation-based methods.
 
 %Rule-based: 消失点, 三角形/梯形;
-Some rule-based methods utilize global priors like vanishing point~\cite{kong2009vanishing}\cite{shi2015fast}, which primarily depend on edge cues. Another part rule-based methods assume the road region as geometric triangular~\cite{zhou2010self} or trapezoidal~\cite{jeong2002vision} shapes.
+Some rule-based methods utilize global priors like vanishing point~\cite{kong2009vanishing}\cite{shi2015fast}, which primarily depend on edge cues to obtain road area. The others assume the road region as geometric triangular~\cite{zhou2010self} or trapezoidal~\cite{jeong2002vision} shapes.
 %trapezoidal\cite{ososinski2015automatic}
 
 %Segmentation-based: AdaBoost, SVM, GMM
-Segmentation-based methods formulate the problem as pixel level segmentation tasks. Some studies~\cite{lu2014hierarchical}
-%\cite{dahlkamp2006self}
-assume the region at bottom of images as road data or collect vehicle trajectories as drivable area~\cite{mei2017scene}.
-Other methods~\cite{alon2006off}\cite{wang2009unstructured} depend on fixed models like AdaBoost, and make use of various texture~\cite{alon2006off} or hybrid features~\cite{wang2009unstructured} for segmentation.
+Segmentation-based methods formulate the problem as pixel-level segmentation tasks. Some studies~\cite{lu2014hierarchical}
+assume the region at bottom of images as road data or collect vehicle trajectories as drivable area~\cite{mei2017scene}, then label similar regions as road.
+Other methods~\cite{alon2006off}\cite{wang2009unstructured} depend on fixed road models and make use of hybrid features to extract continuous region.
 
 \subsection{Deep Learning Methods}
 %得益于大规模数据集的发展，深度学习的方法可以细粒度语义分割，但主要都是城市环境
-Benefit by developments of deep networks~\cite{long2015fully} and large-scale annotated datasets like Cityscapes~\cite{cordts2016cityscapes}, deep learning methods are able to get fine-grained semantic segmentation or maps for autonomous driving. However, most studies face to urban scenes. Due to the lack of large-scale datasets and ambiguous problem definition, research in off-road environment~\cite{maturana2018real} is still limited.
+Benefit by developments of deep networks~\cite{long2015fully} and large-scale datasets with fine-grained labels like Cityscapes~\cite{cordts2016cityscapes} and SemanticKITTI~\cite{behley2019semantickitti}, deep learning methods are able to get fine-grained semantic segmentation or maps. However, most existing datasets and studies are designed for urban scenes, and research in off-road environment is still limited.
 
 %减少数据标注需求的尝试(尤其是越野场景)IV-19等
-Existing studies for off-road scenes usually attempt to reduce the demand of fine-annotated data, such as weakly and semi-supervised learning~\cite{suger2015traversability}\cite{gao2019off}, and transfer learning~\cite{holder2016road}\cite{sharma2019semantic}. 
-One mainstream idea is automatically generating training data from other sensor modalities. For example, label traversable area from human-driven trajectories and obstacles from 3D LiDAR data\cite{tang2017one}\cite{gao2019off}, classify different terrains by audio features~\cite{zurn2020self} or force–torque signals~\cite{wellhausen2019should}.
+Due to the lack of datasets, studies for off-road scenes attempt several ways to reduce the demand of fine-annotated data, such as weakly and semi-supervised learning~\cite{suger2015traversability}\cite{gao2019off}, and transfer learning~\cite{holder2016road}\cite{sharma2019semantic}. 
+One mainstream idea is automatically generating training data from other sensor modalities, such as 3D LiDAR data\cite{tang2017one}\cite{gao2019off}, audio features~\cite{zurn2020self} and force–torque signals~\cite{wellhausen2019should}.
 Another idea is transfer knowledge of deep networks from existing urban datasets~\cite{holder2016road} or synthetic data~\cite{sharma2019semantic} to off-road environment.
-Nevertheless, transferred models still need some fine-annotated data for finetuning, and the performance is limited by domain gaps. Meanwhile, auto-generated labels and synthetic data could be more accessible, but their label granularity can hardly support fine-grained semantic segmentation and mapping.
+Nevertheless, transferred models still need some fine-annotated data for finetuning, and the performance is limited by domain gaps. Meanwhile, labels from other modalities or synthetic data are too granularity-limited to support fine-grained semantic segmentation and mapping.
 
 \subsection{Contrastive Learning}
-Recent progress in contrastive learning~\cite{oord2018CPC}\cite{chen2020simple}\cite{he2020momentum} demonstrates that discriminative representations could be learnt through unsupervised pipeline, by contrasting positive and negative samples. Various sample definitions make contrastive learning suitable for diverse domains like natural language~\cite{oord2018CPC} and images~\cite{tian2019contrastive}. 
-Zhao et al.~\cite{zhao2020contrastive} introduce contrastive learning to semantic segmentation task, but rely on pixel-level labeled data for initial contrastive learning, then generate pseudo labels for unlabeled images.
+Recent progress in contrastive learning~\cite{oord2018CPC}\cite{chen2020simple}\cite{he2020momentum} demonstrates that discriminative representations could be learnt through a self-supervised pipeline, by contrasting positive and negative samples. Various sample definitions make contrastive learning suitable for diverse domains like natural language~\cite{oord2018CPC} and images~\cite{tian2019contrastive}. 
+Zhao et al.~\cite{zhao2020contrastive} introduce contrastive learning to semantic segmentation task, but rely on pixel-level labeled data for initial contrastive learning and generating pseudo labels for unlabeled images.
 
-Different from settings in~\cite{zhao2020contrastive}, this work only rely on a small number of low-cost anchor annotations without concrete semantic labels for contrastive learning. It can alleviate labeling difficulties in ambiguous off-road scenes, while learning discriminative feature representations without large quantities of pixel-level human annotations.
+Different from settings in~\cite{zhao2020contrastive}, this work only rely on a small number of sparse anchor annotations without pixel-level labels, and use contrastive learning to obtain feature representations to discriminate regions with different semantic attributes, which is further used to develop a method of fine-grained semantic segmentation and mapping.
 
 \begin{figure*}[]
 	%	\vspace{-2mm}
@@ -250,9 +256,10 @@ We denote positive samples' constraints as $Pos(i,j)$: if anchor $a_i$ and $a_j$
 Negative samples' constraints are defined in a similar way, and denoted as $Neg(i,j)$.
 %正样本约束:若锚点$a_i$和$a_j$互为正样本，且聚类标签$Lab_i=Lab_j$，则满足正样本约束，并记$Pos(i,j)=1$，否则$Pos(i,j)=0$. 负样本约束$Neg(i,j)$定义同理；
 
-We use the following metrics to evaluate how well the clustering results fit human annotated anchors:
+We use the following metrics (denote as \textit{anchor accuracy}) to evaluate how well the clustering results fit human annotated anchors:
 
 \begin{equation}
+\label{R}
 \mathcal{R}=\dfrac{\sum_{i,j}{Pos(i,j)}+\sum_{i,j}{Neg(i,j)}}{N\cdot (N-1)}, i \neq j
 \end{equation}
 Essentially, it can be seen as Rand Index~\cite{rand1971objective}, which is a commonly used measurement for clustering.
@@ -279,7 +286,7 @@ Essentially, it can be seen as Rand Index~\cite{rand1971objective}, which is a c
 		\end{tabular}
 		\begin{tablenotes}
 			\footnotesize
-			\item[*] \textbf{BG}: background; \textbf{base}: basic pipeline without data augmentation or background information; \textbf{base\_DA}: with basic data augmentation, without background information; \textbf{BG192/256/320}: complete pipeline with different background size.
+			\item[*] \textbf{BG}: background; \textbf{base}: basic pipeline without data augmentation or background information; \textbf{base\_DA}: with basic data augmentation, without background information; \textbf{BG192/256/320}: complete pipeline with different background size; \textbf{$\bar{\mathcal{R}}$}: average $\mathcal{R}$.
 		\end{tablenotes}
 	\end{threeparttable}
 \end{table*}

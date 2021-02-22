@@ -21,6 +21,51 @@ Mennatullah Siam, Sara Elkerdawy, Martin Jagersand, and Senthil Yogamani.
 \newblock In {\em International Conference on Intelligent Transportation
   Systems}, pages 1--8. IEEE, 2017.
 
+\bibitem{zhou2012self}
+Shengyan Zhou, Junqiang Xi, Matthew~W McDaniel, Takayuki Nishihata, Phil
+  Salesses, and Karl Iagnemma.
+\newblock Self-supervised learning to visually detect terrain surfaces for
+  autonomous robots operating in forested terrain.
+\newblock {\em Journal of Field Robotics}, 29(2):277--297, 2012.
+
+\bibitem{nefian2006detection}
+Ara~V Nefian and Gary~R Bradski.
+\newblock Detection of drivable corridors for off-road autonomous navigation.
+\newblock In {\em International Conference on Image Processing}, pages
+  3025--3028. IEEE, 2006.
+
+\bibitem{ososinski2015automatic}
+Marek Ososinski and Fr{\'e}d{\'e}ric Labrosse.
+\newblock Automatic driving on ill-defined roads: An adaptive,
+  shape-constrained, color-based method.
+\newblock {\em Journal of Field Robotics}, 32(4):504--533, 2015.
+
+\bibitem{kong2009vanishing}
+Hui Kong, Jean-Yves Audibert, and Jean Ponce.
+\newblock Vanishing point detection for road detection.
+\newblock In {\em Conference on Computer Vision and Pattern Recognition}, pages
+  96--103. IEEE, 2009.
+
+\bibitem{shi2015fast}
+Jinjin Shi, Jinxiang Wang, and Fangfa Fu.
+\newblock Fast and robust vanishing point detection for unstructured road
+  following.
+\newblock {\em Transactions on Intelligent Transportation Systems},
+  17(4):970--979, 2015.
+
+\bibitem{alon2006off}
+Yaniv Alon, Andras Ferencz, and Amnon Shashua.
+\newblock Off-road path following using region classification and geometric
+  projection constraints.
+\newblock In {\em Conference on Computer Vision and Pattern Recognition},
+  volume~1, pages 689--696. IEEE, 2006.
+
+\bibitem{wang2009unstructured}
+Jian Wang, Zhong Ji, and Yu-Ting Su.
+\newblock Unstructured road detection using hybrid features.
+\newblock In {\em International Conference on Machine Learning and
+  Cybernetics}, volume~1, pages 482--486. IEEE, 2009.
+
 \bibitem{wellhausen2019should}
 Lorenz Wellhausen, Alexey Dosovitskiy, Ren{\'e} Ranftl, Krzysztof Walas, Cesar
   Cadena, and Marco Hutter.
@@ -28,17 +73,32 @@ Lorenz Wellhausen, Alexey Dosovitskiy, Ren{\'e} Ranftl, Krzysztof Walas, Cesar
   self-supervised learning.
 \newblock {\em Robotics and Automation Letters}, 4(2):1509--1516, 2019.
 
-\bibitem{thrun2006stanley}
-Sebastian Thrun, Mike Montemerlo, Hendrik Dahlkamp, David Stavens, Andrei Aron,
-  James Diebel, Philip Fong, John Gale, Morgan Halpenny, Gabriel Hoffmann,
-  et~al.
-\newblock Stanley: The robot that won the {DARPA Grand Challenge}.
-\newblock {\em Journal of Field Robotics}, 23(9):661--692, 2006.
+\bibitem{rateke2019passive}
+Thiago Rateke, Karla~A Justen, Vito~F Chiarella, Antonio~C Sobieranski, Eros
+  Comunello, and Aldo~Von Wangenheim.
+\newblock Passive vision region-based road detection: A literature review.
+\newblock {\em ACM Computing Surveys}, 52(2):1--34, 2019.
 
-\bibitem{zhang2010lidar}
-Wende Zhang.
-\newblock {LiDAR}-based road and road-edge detection.
-\newblock In {\em Intelligent Vehicles Symposium}, pages 845--848. IEEE, 2010.
+\bibitem{long2015fully}
+Jonathan Long, Evan Shelhamer, and Trevor Darrell.
+\newblock Fully convolutional networks for semantic segmentation.
+\newblock In {\em Conference on Computer Vision and Pattern Recognition}, pages
+  3431--3440, 2015.
+
+\bibitem{cordts2016cityscapes}
+Marius Cordts, Mohamed Omran, Sebastian Ramos, Timo Rehfeld, Markus Enzweiler,
+  Rodrigo Benenson, Uwe Franke, Stefan Roth, and Bernt Schiele.
+\newblock The {CityScapes} dataset for semantic urban scene understanding.
+\newblock In {\em Conference on Computer Vision and Pattern Recognition}, pages
+  3213--3223, 2016.
+
+\bibitem{behley2019semantickitti}
+Jens Behley, Martin Garbade, Andres Milioto, Jan Quenzel, Sven Behnke, Cyrill
+  Stachniss, and Jurgen Gall.
+\newblock {SemanticKITTI}: A dataset for semantic scene understanding of
+  {LiDAR} sequences.
+\newblock In {\em International Conference on Computer Vision}, pages
+  9297--9307. IEEE, 2019.
 
 \bibitem{oord2018CPC}
 Aaron van~den Oord, Yazhe Li, and Oriol Vinyals.
@@ -57,25 +117,6 @@ Kaiming He, Haoqi Fan, Yuxin Wu, Saining Xie, and Ross Girshick.
 \newblock Momentum contrast for unsupervised visual representation learning.
 \newblock In {\em Conference on Computer Vision and Pattern Recognition}, pages
   9729--9738, 2020.
-
-\bibitem{deng2009imagenet}
-Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li~Fei-Fei.
-\newblock {ImageNet}: A large-scale hierarchical image database.
-\newblock In {\em Conference on Computer Vision and Pattern Recognition}, pages
-  248--255. Ieee, 2009.
-
-\bibitem{kong2009vanishing}
-Hui Kong, Jean-Yves Audibert, and Jean Ponce.
-\newblock Vanishing point detection for road detection.
-\newblock In {\em Conference on Computer Vision and Pattern Recognition}, pages
-  96--103. IEEE, 2009.
-
-\bibitem{shi2015fast}
-Jinjin Shi, Jinxiang Wang, and Fangfa Fu.
-\newblock Fast and robust vanishing point detection for unstructured road
-  following.
-\newblock {\em Transactions on Intelligent Transportation Systems},
-  17(4):970--979, 2015.
 
 \bibitem{zhou2010self}
 Shengyan Zhou and Karl Iagnemma.
@@ -100,37 +141,6 @@ Jilin Mei, Yufeng Yu, Huijing Zhao, and Hongbin Zha.
 \newblock Scene-adaptive off-road detection using a monocular camera.
 \newblock {\em Transactions on Intelligent Transportation Systems},
   19(1):242--253, 2017.
-
-\bibitem{alon2006off}
-Yaniv Alon, Andras Ferencz, and Amnon Shashua.
-\newblock Off-road path following using region classification and geometric
-  projection constraints.
-\newblock In {\em Conference on Computer Vision and Pattern Recognition},
-  volume~1, pages 689--696. IEEE, 2006.
-
-\bibitem{wang2009unstructured}
-Jian Wang, Zhong Ji, and Yu-Ting Su.
-\newblock Unstructured road detection using hybrid features.
-\newblock In {\em International Conference on Machine Learning and
-  Cybernetics}, volume~1, pages 482--486. IEEE, 2009.
-
-\bibitem{long2015fully}
-Jonathan Long, Evan Shelhamer, and Trevor Darrell.
-\newblock Fully convolutional networks for semantic segmentation.
-\newblock In {\em Conference on Computer Vision and Pattern Recognition}, pages
-  3431--3440, 2015.
-
-\bibitem{cordts2016cityscapes}
-Marius Cordts, Mohamed Omran, Sebastian Ramos, Timo Rehfeld, Markus Enzweiler,
-  Rodrigo Benenson, Uwe Franke, Stefan Roth, and Bernt Schiele.
-\newblock The {CityScapes} dataset for semantic urban scene understanding.
-\newblock In {\em Conference on Computer Vision and Pattern Recognition}, pages
-  3213--3223, 2016.
-
-\bibitem{maturana2018real}
-Daniel Maturana, Po-Wei Chou, Masashi Uenoyama, and Sebastian Scherer.
-\newblock Real-time semantic mapping for autonomous off-road navigation.
-\newblock In {\em Field and Service Robotics}, pages 335--350. Springer, 2018.
 
 \bibitem{suger2015traversability}
 Benjamin Suger, Bastian Steder, and Wolfram Burgard.
