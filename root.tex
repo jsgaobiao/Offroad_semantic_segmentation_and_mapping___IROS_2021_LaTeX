@@ -51,7 +51,7 @@ Fine-Grained Off-Road Semantic Segmentation and Mapping via Contrastive Learning
 	\oldtwocolumn[{#1}{
 		\begin{center}
 			\includegraphics[width=\textwidth]{problem_def.pdf}
-			\captionof{figure}{The significance of fine-grained semantic segmentation and mapping in off-road environment, where coarse-grained results can hardly adapt diverse scenes with unified threshold. (a) scene image. (b) coarse-grained semantic segmentation (binary classification). (c) coarse-grained semantic map (bird's-eye-view). (d) fine-grained semantic segmentation. (e) fine-grained semantic map (bird's-eye-view).}
+			\captionof{figure}{The significance of fine-grained semantic segmentation and mapping in off-road environment, where coarse-grained results can hardly adapt diverse scenes. (a) scene image. (b) coarse-grained semantic segmentation (binary classification). (c) coarse-grained semantic map (bird's-eye-view). (d) fine-grained semantic segmentation. (e) fine-grained semantic map (bird's-eye-view).}
 			\label{fig:problem_def}
 			%        \vspace{3mm}
 		\end{center}
@@ -66,8 +66,10 @@ Fine-Grained Off-Road Semantic Segmentation and Mapping via Contrastive Learning
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{abstract}
-Fine-grained off-road scene understanding for traversability analysis is of great importance for self-driving platforms with different trafficability. However, off-road scenes are unstructured and full of area with semantic ambiguity. It causes difficulties for problem definition and fine-grained semantic labeling, which further leads to the absence of large-scale pixel-level datasets for off-road semantic segmentation and mapping.
-To address these challenges, this work proposes a fine-grained off-road semantic segmentation and mapping method. Depending on a small number of low-cost anchor annotations without concrete semantic labels, the proposed contrastive learning pipeline can learn discriminative feature representations for semantic segmentation, with no need for pixel-level human annotations. The experiments on diverse off-road datasets illustrate the reasonability of our framework and the validity of our fine-grained semantic segmentation and mapping results.
+Driving scene understanding plays a vital role for mobile robots, especially when traversing in complex off-road scenes.
+Early researches usually formulated the problem as a coarse-grained segmentation, i.e., road and non-road area. Nevertheless, the mechanical performance of off-road robots can be very diverse, leading to different definition of safe regions to traverse, which requests a fine-grained understanding ability.
+For this purpose, we propose a contrastive learning based method to achieve fine-grained semantic segmentation and mapping of off-road scenes. It does not need pixel-level labels, which is time-consuming and difficult to annotate at natural scenes, but only relies on a few sparse anchor patches indicating regions with different semantic attributes.
+The experiments across diverse off-road scenes illustrate the validity of our method and show its potential in applications for off-road environments.
 
 \end{abstract}
 
@@ -76,24 +78,24 @@ To address these challenges, this work proposes a fine-grained off-road semantic
 %近年来，无人驾驶技术迅猛发展。驾驶场景的语义理解，是无人车进行有效决策规划和自主行驶的前提。目前，面向城市场景的语义理解研究非常丰富。然而，越野场景以自然物体为主、缺少结构化特征的属性，使得这一问题的定义不够明确。
 Mobile robotic and autonomous driving techniques have been witnessed of tremendous progress in recent years~\cite{feng2020deep}. Driving scene understanding plays a vital role as a prerequisite for the decision making and planning of a robot to traverse in complex environment~\cite{badue2020self}.
 Nowadays researches are mainly oriented to the applications at structural scenes such as indoor, parking lots, urban streets, highways, etc.~\cite{siam2017deep},
-whereas researches on understanding off-road environments are rare.
+whereas research on understanding off-road environments is rare.
 Off-road environment is unstructured, dominated by natural objects, lacking artificial features, and its terrain conditions are various and complex.
-One of the fundamental techniques of an off-road robot is to detect safe region (hereinafter called {\it off-roads}) to traverse, which has also been termed as traversable surface~\cite{zhou2012self}, drivable corridor~\cite{nefian2006detection}, etc., in literature.
-Comparing with the roads in structured environments, where functional attribute is clearly defined using artificial features such as pavement, barrier and markings,
+One of the fundamental techniques of an off-road robot is to detect safe region (hereinafter called {\it off-road}) to traverse, which has also been termed as traversable surface~\cite{zhou2012self}, drivable corridor~\cite{nefian2006detection}, etc., in literature.
+Comparing with the roads in structured environments, where functional attributes are clearly defined by artificial features such as pavement, barrier and markings,
 off-roads are ill-defined~\cite{ososinski2015automatic}. 
 
-Early methods of off-roads detection are usually developed by assuming color, texture, boundary of the target, where rule-based methods of extracting vanishing point and subsequently road boundaries~\cite{kong2009vanishing}\cite{shi2015fast}, and segmentation-based methods of extracting continuous regions based on certain road models are developed~\cite{alon2006off}\cite{wang2009unstructured}.
+Early methods of off-road detection are usually developed by assuming color, texture, boundary of the target, where rule-based methods of extracting vanishing point and subsequently road boundaries~\cite{kong2009vanishing}\cite{shi2015fast}, and segmentation-based methods of extracting continuous regions based on certain road models are developed~\cite{alon2006off}\cite{wang2009unstructured}.
 These methods are called {\it coarse-grained} ones as the problem is formulated as a binary classification, e.g. labelling each image pixel to {\it road} or {\it non-road}.
-As illustrated in Fig. \ref{fig:problem_def}(b-c), such methods may fail to detect any region to traverse at tough terrains or extract too wide region that lacks of efficiency in prompting the best choice at open area.
-Moreover, the mechanical performance of off-road robots can be very different, leading to different definition and selection of safe regions to traverse.
-Understanding scenes with find-grained labels are needed for off-road robots~\cite{wellhausen2019should}.
+As illustrated in Fig. \ref{fig:problem_def}(b-c), such methods may fail to detect any region to traverse at tough terrains or extract too wide region that lacks efficiency in prompting the best choice at open area.
+Moreover, the mechanical performance of off-road robots can be very different, leading to different definitions and selections of safe regions to traverse.
+Understanding scenes with find-grained labels is needed for off-road robots~\cite{wellhausen2019should}.
 On the other hand, deep learning methods have been studied in recent years~\cite{rateke2019passive}. 
 Semantic segmentation using deep learning techniques infers scenes at pixel- or point-levels~\cite{long2015fully}, where large-scale datasets such as Cityscapes~\cite{cordts2016cityscapes}, SemanticKITTI~\cite{behley2019semantickitti} with fine-grained labels and massive annotations are needed.
-There is no such dataset at off-road scenes. How to define fine-grained labels to achieve meaningful scene understanding for a robot to traverse off-roads is still an open question.  
+There is no such dataset at off-road scenes. How to define fine-grained labels to achieve meaningful scene understanding for a robot to traverse off-road is still an open question.  
 
 This research proposes a contrastive learning method to achieve fine-grained semantic segmentation and mapping of off-road scenes as shown in Fig. \ref{fig:problem_def}(d-e).
-It is difficult to define fine-grained categories that are generalized at diverse off-road scenes and it is further hard for a human operator to assign fine-grained labels to each image pixel, where the definitions could be very ambiguous at natural scenes. However, it is not difficult for a human operator to annotate images by sparse anchor patches as illustrated in Fig. \ref{fig:pipeline} to indicate the regions with different semantic attributes on their traversability. Inspired by the impressive progress and the promising results of contrastive learning~\cite{oord2018CPC}\cite{chen2020simple}\cite{he2020momentum}, this research learns a feature representation to discriminate regions with different semantic attributes using contrastive learning, which is used to develop a method of find-grained semantic segmentation and mapping for off-road applications.
-Experiments are conducted using our off-road dataset including over $12,000$ frames and 3 subsets with diverse off-road scenes. With less than training 100 frames, our method can achieve nearly 90\% anchor accuracy on test sets in cross-scene validation. The fine-grained results are further demonstrated by additional LiDAR data analysis.
+It is difficult to define fine-grained categories that are generalized at diverse off-road scenes and it is further hard for a human operator to assign fine-grained labels to each image pixel, where the definitions could be very ambiguous at natural scenes. However, it is not difficult for a human operator to annotate images by sparse anchor patches as illustrated in Fig. \ref{fig:pipeline} to indicate the regions with different semantic attributes on their traversability. Inspired by impressive progress and promising results of contrastive learning~\cite{oord2018CPC}\cite{chen2020simple}\cite{he2020momentum}, this research learns a feature representation to discriminate regions with different semantic attributes using contrastive learning, which is used to develop a method of find-grained semantic segmentation and mapping for off-road applications.
+Experiments are conducted using our off-road dataset including over $12,000$ frames and 3 subsets with diverse off-road scenes. With less than 100 training frames, our method can achieve nearly 90\% anchor accuracy on test sets in cross-scene validation. The fine-grained results are further demonstrated by additional LiDAR data analysis.
 The experimental results prove the validity of our proposed method, and show its potential in applications for off-road environments.
 
 %本文结构如下…
@@ -102,10 +104,10 @@ are introduced in Section~\ref{related_works}. Section~\ref{methodology} present
 
 \section{Related Works} \label{related_works}
 \subsection{Rule/Segmentation-based Methods}
-Rule/segmentation-based methods are mainly developed by assuming color, texture, boundary of the target region, and these researches are mostly coarse-grained understanding that formulate the problem as a binary classification. They can be broadly divided into rule-base and segmentation-based methods.
+Rule/segmentation-based methods are mainly developed by assuming color, texture, boundary of the target region, and these researches are mostly coarse-grained understanding that formulate the problem as a binary classification. They can be broadly divided into rule-based and segmentation-based methods.
 
 %Rule-based: 消失点, 三角形/梯形;
-Some rule-based methods utilize global priors like vanishing point~\cite{kong2009vanishing}\cite{shi2015fast}, which primarily depend on edge cues to obtain road area. The others assume the road region as geometric triangular~\cite{zhou2010self} or trapezoidal~\cite{jeong2002vision} shapes.
+Some rule-based methods utilize global priors like vanishing point~\cite{kong2009vanishing}\cite{shi2015fast}, which primarily depend on edge cues to obtain road area. The others assume the road region as geometric triangular~\cite{zhou2010self} or trapezoidal~\cite{jeong2002vision} shape.
 %trapezoidal\cite{ososinski2015automatic}
 
 %Segmentation-based: AdaBoost, SVM, GMM
@@ -115,19 +117,19 @@ Other methods~\cite{alon2006off}\cite{wang2009unstructured} depend on fixed road
 
 \subsection{Deep Learning Methods}
 %得益于大规模数据集的发展，深度学习的方法可以细粒度语义分割，但主要都是城市环境
-Benefit by developments of deep networks~\cite{long2015fully} and large-scale datasets with fine-grained labels like Cityscapes~\cite{cordts2016cityscapes} and SemanticKITTI~\cite{behley2019semantickitti}, deep learning methods are able to get fine-grained semantic segmentation or maps. However, most existing datasets and studies are designed for urban scenes, and research in off-road environment is still limited.
+Benefit by developments of deep networks~\cite{long2015fully} and large-scale datasets with fine-grained labels like Cityscapes~\cite{cordts2016cityscapes} and SemanticKITTI~\cite{behley2019semantickitti}, deep learning methods are able to get fine-grained semantic segmentation or maps. However, most existing datasets and studies are designed for urban scenes, and research in off-road environments is still limited.
 
 %减少数据标注需求的尝试(尤其是越野场景)IV-19等
 Due to the lack of datasets, studies for off-road scenes attempt several ways to reduce the demand of fine-annotated data, such as weakly and semi-supervised learning~\cite{suger2015traversability}\cite{gao2019off}, and transfer learning~\cite{holder2016road}\cite{sharma2019semantic}. 
-One mainstream idea is automatically generating training data from other sensor modalities, such as 3D LiDAR data\cite{tang2017one}\cite{gao2019off}, audio features~\cite{zurn2020self} and force–torque signals~\cite{wellhausen2019should}.
+One mainstream idea is automatically generating training data from other sensor modalities, such as 3D LiDAR data~\cite{tang2017one}\cite{gao2019off}, audio features~\cite{zurn2020self} and force–torque signals~\cite{wellhausen2019should}.
 Another idea is transfer knowledge of deep networks from existing urban datasets~\cite{holder2016road} or synthetic data~\cite{sharma2019semantic} to off-road environment.
-Nevertheless, transferred models still need some fine-annotated data for finetuning, and the performance is limited by domain gaps. Meanwhile, labels from other modalities or synthetic data are too granularity-limited to support fine-grained semantic segmentation and mapping.
+Nevertheless, transferred models still need some fine-annotated data for finetuning, and the performance is limited by domain gaps. Meanwhile, labels from other modalities or synthetic data are too limited to support fine-grained semantic segmentation and mapping.
 
 \subsection{Contrastive Learning}
 Recent progress in contrastive learning~\cite{oord2018CPC}\cite{chen2020simple}\cite{he2020momentum} demonstrates that discriminative representations could be learnt through a self-supervised pipeline, by contrasting positive and negative samples. Various sample definitions make contrastive learning suitable for diverse domains like natural language~\cite{oord2018CPC} and images~\cite{tian2019contrastive}. 
 Zhao et al.~\cite{zhao2020contrastive} introduce contrastive learning to semantic segmentation task, but rely on pixel-level labeled data for initial contrastive learning and generating pseudo labels for unlabeled images.
 
-Different from settings in~\cite{zhao2020contrastive}, this work only rely on a small number of sparse anchor annotations without pixel-level labels, and use contrastive learning to obtain feature representations to discriminate regions with different semantic attributes, which is further used to develop a method of fine-grained semantic segmentation and mapping.
+Inspired by the promising results of contrastive learning, but different from settings in~\cite{zhao2020contrastive}, this work only relies on a small number of sparse anchor annotations without pixel-level labels to learn feature representations to discriminate regions with different semantic attributes, which is further used to develop a method of fine-grained semantic segmentation and mapping.
 
 \begin{figure*}[]
 	%	\vspace{-2mm}
@@ -148,7 +150,7 @@ Therefore, given an image patch $\mathcal{P}_{k,i}$, its distance to another ima
 In order to make the annotation operational easy, in this research, the labels of the anchor patches are comparable only if they belong to the same image.
 
 Given a set of training images $\mathcal{I}=\{I_k\}$ with anchor patches $\mathcal{A}=\{A_k\}$ on each of them, this research is to find a representation $f_{\theta}$ that encodes image patch $p$ to $z$, where at the low-dimensional feature space $\mathbb{Z}^D$, the $z$s of similar semantic meaning distribute closely. 
-This research finds $f_{\theta}$ through contrastive learning, which is further used in an application of fine-grained semantic segmentation for off-road traversability analysis.
+This research finds $f_{\theta}$ through contrastive learning, which is further used in an application of fine-grained semantic segmentation and mapping for off-road traversability analysis.
 
 \begin{figure}[]
 	%	\vspace{-2mm}
@@ -160,24 +162,23 @@ This research finds $f_{\theta}$ through contrastive learning, which is further 
 
 \subsection{Feature Representation through Contrastive Learning}
 
-\subsubsection {Sampling strategy}
+\subsubsection {Sampling Strategy}
 
-In each training step, an anchor patch $\mathcal{P}_{k,i}$ is selected to compose a query sample $q$, and a positive sample $q^+$ and $n$ negative samples $\{q^-_i|i=1,..,n\}$ are subsequently composed on the anchor patches of the same image $I_k$.
+In each training step, an anchor patch $\mathcal{P}_{k,i}$ is selected to compose a query sample $q$, then a positive sample $q^+$ and $n$ negative samples $\{q^-_i|i=1,..,n\}$ are subsequently composed on the anchor patches of the same image $I_k$.
 
-Based on the label $a_{k,i}$ of $\mathcal{P}_{k,i}$, the anchor patches of th denotes those sharing the same label $a_{k,i}$, whereas $\{\mathcal{P}_{k,i}^-\}$ for the rest.
-Assuming that an off-road scene is spatially continuous, i.e. nearby regions could be semantically similar.
-An anchor patch is first selected randomly from $\{\mathcal{P}_{k,i}^+\}$, where an image patch is randomly clipped from its neighborhood to compose a positive sample $q^+$. As illustrated in Fig.~\ref{fig:dataaug}(a), the neighborhood is defined to have the center point of the randomly clipped image patch within the original one. Similarly, $n$ negative samples $\{q^-_i\}$ are composed on $\{\mathcal{P}_{k,i}^-\}$.
+Based on the label $a_{k,i}$ of $\mathcal{P}_{k,i}$, the anchor patches in the same image $I_k$ are divided into two sets, where $\{\mathcal{P}_{k,i}^+\}$ denotes those sharing the same label $a_{k,i}$, whereas $\{\mathcal{P}_{k,i}^-\}$ for the rest.
+Assuming that an off-road scene is spatially continuous, i.e. nearby regions could be semantically similar, an anchor patch is first randomly selected from $\{\mathcal{P}_{k,i}^+\}$, where an image patch is randomly clipped from its neighborhood to compose a positive sample $q^+$. As illustrated in Fig.~\ref{fig:dataaug}(a), the randomly clipped neighborhood patches should have the center points within the original one. Similarly, $n$ negative samples $\{q^-_i\}$ are composed on $\{\mathcal{P}_{k,i}^-\}$.
 
-\subsubsection{Composing sample data}
+\subsubsection{Composing Sample Data}
 
-With an image patch $p$, a sample data is composed in the same way for query, positive or negative samples.
-As shown in Fig.~\ref{fig:dataaug}(b), a sample data contains foreground and background image patches to describe both local and global features. Foreground is image patch $p$, while background is centered at $p$ but with a larger region to provide global scene context. The foreground and background patches are firstly resized to the same scale, then the two patches are concatenated along the channel dimension to compose a 6-channel tensor.
+With an image patch $p$, sample data is composed in the same way for query, positive and negative samples.
+As shown in Fig.~\ref{fig:dataaug}(b), a sample data contains foreground and background image patches to describe both local and global features. Foreground is image patch $p$, while background is centered at $p$ but with a larger region to provide global scene context. The foreground and background patches are firstly resized to the same scale, then concatenated along the channel dimension to compose a 6-channel tensor.
 
-In order to improve robustness in diverse scenes, data augmentation (denoted by $\phi$ in Fig.~\ref{fig:pipeline}) is conducted on the 6-channel tensor of each sample data before forwarding it to the network of $f_{\theta}$. In this research, data augmentation includes random flip, random grey scale and color jitter, which randomly changes the brightness, contrast and saturation of an image.
+In order to improve robustness in diverse scenes, data augmentation (denoted by $\varphi$ in Fig.~\ref{fig:pipeline}) is conducted on the 6-channel tensor of each sample data before forwarding it to the network of $f_{\theta}$. In this research, data augmentation includes random flip, random grey scale and color jitter, which randomly changes the brightness, contrast and saturation of an image.
 
 \subsubsection{Network Design and Loss Function}
 A CNN backbone network in practical terms, e.g. AlexNet~\cite{krizhevsky2012imagenet} is used to model $f_{\theta}$, which converts the 6-channel tensor of a query, positive or negative sample to a normalized low-dimensional feature vector $z\in \mathbb{Z}^D$.
-Contrastive learning is used to find a $\theta$ of $f_{\theta}$, with which the exponential cosine distance of the $z$s are close if they share the same labels, whereas far for those different.
+Contrastive learning is used to find $\theta$ in $f_{\theta}$, with which the exponential cosine distance of the $z$s are close if they share the same labels, whereas far for those different.
 Following the principle of previous contrastive learning studies, a contrastive loss function InfoNCE~\cite{oord2018representation} is implemented:
 
 \vspace{-2mm}
@@ -186,32 +187,32 @@ L=-\log {\dfrac{\exp (z^T \cdot z^+/\tau)}{\exp (z^T \cdot z^+/\tau)+\sum_{i=1}^
 \end{equation}
 where $\tau$ denotes a temperature hyper-parameter.
 
-In this work, since the positive and negative samples are comparable only in the same image, the limited quantity makes it possible to get the feature representations with reasonable memory consumption. In practice, unlike the typical contrastive learning studies~\cite{Wu_2018_CVPR} using memory bank to store feature vectors for each training sample, we randomly select positive/negative samples and calculate their features at each training step.
+In this work, since the positive and negative samples are comparable only in the same image, the limited quantity makes it possible to get feature representations with reasonable memory consumption. In practice, unlike the typical contrastive learning studies~\cite{Wu_2018_CVPR} using a memory bank to store feature vectors for each training sample, we randomly select positive/negative samples and calculate their features at each training step.
 
 \subsection{Off-road Semantic Segmentation and Mapping}
 
-As illustrated in Fig.~\ref{fig:pipeline}, the work flow contains offline learning and on-line prediction, while the latter is composed of further two steps: semantic segmentation of single images and semantic mapping using multiple images.
+As illustrated in Fig.~\ref{fig:pipeline}, the work flow contains offline learning and online prediction, while the latter is composed of further two steps: semantic segmentation of single images and semantic mapping using multiple images.
 
-\subsubsection{Off-line learning}
+\subsubsection{Offline Learning}
 Given a set of training images $\mathcal{I}=\{I_k\}$ with anchor patches $\mathcal{A}=\{A_k\}$ on each of them, a feature encoder $f_\theta$ is thus learnt to convert each image patch to a normalized low-dimensional vector $z\in \mathbb{Z}^D$, where in the space of $\mathbb{Z}^D$, the anchor patches with the same labels are projected close on the exponential cosine distance $exp(z_i^T \cdot z_j)$, whereas far for the others.
 
 The $z$s of the anchor patches are then clustered by K-means method, where a set of mean points $\mathcal{C}=\{\tilde{z}_c\}$ are extracted, representing the features of $\mathcal{K}$ dominant semantic clusters. Here, $\mathcal{K}$ is a hyper-parameter, which decides granularity of semantic segmentation.
 
-\subsubsection{Semantic segmentation}
+\subsubsection{Semantic Segmentation}
 
-Given the current image $\mathcal{I}$, semantic segmentation $\mathcal{S}$ is conducted by generating image patches using sliding windows, and predicting a semantic label for each image patch.
-Given an image patch $p_i$, a semantic label is predicted as follows. A 6-channel tensor data is first composed, containing both local and global features of the image patch. The data is then projected by $f_{\theta}$ to a normalized lower-dimensional feature vector $z_i$, which is subsequently compared with the set of feature vectors $\mathcal{C}=\{\tilde{z}_c\}$ representing the $\mathcal{K}$ dominant semantic labels. The image patch is assigned the semantic label that has the best match on its feature vector, i.e. $a_i = \arg\min_c exp(z_i^T \cdot \tilde{z}_c)$.
+Given the current image $\mathcal{I}_t$, semantic segmentation $\mathcal{S}_t$ is conducted by generating image patches using sliding windows, and predicting a semantic label for each image patch.
+Given an image patch $p_i$, a semantic label is predicted as follows. A 6-channel tensor data is first composed, containing both local and global features of the image patch. The data is then projected by $f_{\theta}$ to a normalized lower-dimensional feature vector $z_i$, which is subsequently compared with the set of feature vectors $\mathcal{C}=\{\tilde{z}_c\}$ representing the $\mathcal{K}$ dominant semantic labels. The image patch is assigned as the semantic label that has the best match on its feature vector, i.e. $l_i = \arg\min_c exp(z_i^T \cdot \tilde{z}_c)$.
 
 To make up denser semantic segmentation, we could adjust step size of sliding windows. For example, we can assign the semantic label to $3*3$ pixels centered at each image patch, while setting sliding windows' horizontal/vertical step size to 3 pixels, then get denser semantic segmentation results.
 
-\subsubsection{Semantic mapping} \label{3_SM}
+\subsubsection{Semantic Mapping} \label{3_SM}
 
-Centered at the ego vehicle's location in the frame, a horizontal plane is drawn at the ground level and tessellated into regular grids. The pixel labels of the current image are projected to corresponding 3D LiDAR point clouds with the calibration parameters, and then projected onto the grids with additional vehicle localization data at each frame. Since a single grid can have multiple label predictions, let $\sigma_{x,y}^c$ denote the counts of predicting label $c$ of grid $(x,y)$, the semantic label $l_{x,y}=\mathop{\text{argmax}_{c} (\sigma_{x,y}^c)}$ is assigned to the grid. Meanwhile, a confidence map is estimated too indicating the confidence of the grids' predicted labels. The confidence value of grid $(x,y)$ is assigned as $\max(\sigma_{x,y}^c)/\sum{\sigma_{x,y}^c}$, which can also serve as a measure to evaluate prediction consistency.
+Centered at the ego vehicle's location in the frame, a horizontal plane is drawn at the ground level and tessellated into regular grids. The pixel labels of the current image are projected to corresponding 3D LiDAR point clouds with the calibration parameters and then projected onto the grids with additional vehicle localization data at each frame. Since a single grid can have multiple label predictions, let $\sigma_{x,y}^c$ denote the counts of predicting label $c$ of grid $(x,y)$, the semantic label $l_{x,y}=\mathop{\text{argmax}_{c} (\sigma_{x,y}^c)}$ is assigned to the grid. Meanwhile, a confidence map is estimated to indicate the confidence of predicted labels. The confidence value of grid $(x,y)$ is assigned as $\max(\sigma_{x,y}^c)/\sum{\sigma_{x,y}^c}$, which can also serve as a measure to evaluate prediction consistency.
 
 \section{Experimental Results}	\label{exp}
 \subsection{Dataset}
-The performance of the proposed method is evaluated on our off-road dataset. The dataset is collected by an instrumented vehicle with a front-view monocular camera, a GPS/IMU suite and a 3D LiDAR. In this work, we mainly use camera images as input data, while the GPS/IMU and LiDAR data are supplementary for semantic mapping.
-As shown in Table~\ref{tab:dataset}, the off-road dataset includes 3 subsets. Take subset A as an example, we randomly selected 50 frames for 973 anchors annotation and training, which only account for about $10\%$ of total 5064 frames. All frames are evaluated when testing, while frames with human annotations are taken into account in quantitative evaluation.
+The performance of the proposed method is evaluated on our off-road dataset. The dataset is collected by an instrumented vehicle with a front-view monocular camera, a GPS/IMU suite, and a 3D LiDAR. In this work, we mainly use camera images as input data, while the GPS/IMU and LiDAR data are supplementary for semantic mapping.
+As shown in Table~\ref{tab:dataset}, the off-road dataset includes 3 subsets. Take subset A as an example, we randomly selected 50 frames and annotated 973 anchors for training, which only account for about $10\%$ of total frames. All frames are evaluated in testing, while frames with human annotations are taken into account in quantitative evaluations.
 
 \begin{table}[]
 	\centering
@@ -233,7 +234,7 @@ As shown in Table~\ref{tab:dataset}, the off-road dataset includes 3 subsets. Ta
 	%	\vspace{-2mm}
 	\centering
 	\includegraphics[scale=0.28]{dataset.pdf}
-	\caption{Typical scenes in three datasets, which represent different off-road environments.}
+	\caption{Typical scenes in three sub-datasets, which include diverse off-road scenarios.}
 	\label{fig:dataset}
 \end{figure}
 
@@ -246,17 +247,17 @@ In addition, as shown in Fig.~\ref{fig:dataset}, the 3 subsets represent differe
 	%	\vspace{-2mm}
 	\centering
 	\includegraphics[width=0.95\textwidth]{anchor_dis.pdf}
-	\caption{Visualization of feature distances of query anchor (A) to its positive (P) and negative (N) samples. Query anchors are circled by yellow rings. P/N is according to human annotated anchor labels, and numbers in parentheses measure samples' similarity to the query anchor.}
+	\caption{Visualization of feature distances of query anchor (A) to its positive (P) and negative (N) samples. Query anchors are circled by yellow rings. Numbers in parentheses measure samples' similarity to the query anchor.}
 	\label{fig:anchor_dis}
 \end{figure*}
 
 Suppose that there are $N$ anchors in one frame, then any two anchors must be either positive or negative samples of each other. Hence, there exists $N \cdot(N-1)$ pairs anchor constraints.
 %假设一帧图像中有$N$个锚点，两两互为正/负样本，则存在$N\cdot(N-1)$对正负样本约束
-We denote positive samples' constraints as $Pos(i,j)$: if anchor $a_i$ and $a_j$ are positive samples of each other and classified into the same cluster, $Pos(i,j)=1$. Otherwise, if they are not classified to the same cluster, $Pos(i,j)=0$.
-Negative samples' constraints are defined in a similar way, and denoted as $Neg(i,j)$.
+We denote positive samples' constraints as $Pos(i,j)$. If anchor patch $\mathcal{P}_{k,i}$ and $\mathcal{P}_{k,j}$ are positive samples of each other and classified into the same semantic cluster, then $Pos(i,j)=1$. Otherwise, if they are not classified to the same semantic cluster, $Pos(i,j)=0$.
+Negative samples' constraints are defined in a similar way and denoted as $Neg(i,j)$.
 %正样本约束:若锚点$a_i$和$a_j$互为正样本，且聚类标签$Lab_i=Lab_j$，则满足正样本约束，并记$Pos(i,j)=1$，否则$Pos(i,j)=0$. 负样本约束$Neg(i,j)$定义同理；
 
-We use the following metrics (denote as \textit{anchor accuracy}) to evaluate how well the clustering results fit human annotated anchors:
+We use the following metrics called \textit{anchor accuracy} to evaluate how well the clustering results fit human annotations:
 
 \begin{equation}
 \label{R}
@@ -266,7 +267,7 @@ Essentially, it can be seen as Rand Index~\cite{rand1971objective}, which is a c
 
 \begin{table*}
 	\centering
-	\caption{Cross Validation Results ($\mathcal{R}$) on Different Datasets}
+	\caption{Cross-Validation Results ($\mathcal{R}$) on Different Datasets}
 	\label{tab:cross_eval}
 	\renewcommand{\arraystretch}{1.2}
 	\begin{threeparttable}
@@ -286,18 +287,17 @@ Essentially, it can be seen as Rand Index~\cite{rand1971objective}, which is a c
 		\end{tabular}
 		\begin{tablenotes}
 			\footnotesize
-			\item[*] \textbf{BG}: background; \textbf{base}: basic pipeline without data augmentation or background information; \textbf{base\_DA}: with basic data augmentation, without background information; \textbf{BG192/256/320}: complete pipeline with different background size; \textbf{$\bar{\mathcal{R}}$}: average $\mathcal{R}$.
+			\item[*] \textbf{BG}: background; \textbf{base}: pipeline without data augmentation or background information; \textbf{base\_DA}: use data augmentation, without background information; \textbf{BG192/256/320}: complete pipeline with different background size; \textbf{$\bar{\mathcal{R}}$}: average anchor accuracy $\mathcal{R}$.
 		\end{tablenotes}
 	\end{threeparttable}
 \end{table*}
 \subsection{Results on Proposed Method}
 %说明一下三个实验设计的目的：1.探究对比学习学到的特征表达、距离度量是否有效；2.通过交叉验证说明我们设计的模型具有较优的性能和不同场景下的泛化能力；3.通过构建细粒度语义地图/置信度地图，结合case study和激光平整度统计分析，说明细粒度分类结果的有效性。
-To evaluate the proposed method, we design the following experiments: (1) feature distance measurement, explore the validity of feature encoder and distance measurement learned by contrastive learning. (2) cross validation and ablation study, verify the performance and robustness of our proposed method in diverse test scenes, while explore the effects of different modules or parameters. (3) fine-grained semantic segmentation and mapping, make concrete case study and statistical results to show our method's validity for fine-grained off-road traversability analysis.
-
+To evaluate the proposed method, we design the following experiments: (1) feature distance measurement, explore the validity of feature encoder and distance measurement learned by contrastive learning. (2) cross-validation and ablation study, verify the performance and robustness of our proposed method in diverse test scenes, while exploring the effects of different module settings. (3) fine-grained semantic segmentation and mapping, make concrete case study and statistical analysis from additional LiDAR data to show the validity of our fine-grained results.
 
 \subsubsection{Feature Distance Measurement}
 %\textbf{回答问题}：对比学习模块学到的特征距离度量是否有效？\textbf{结论}：对比学习学到的特征距离度量，可以满足“语义相似的patch特征距离更近，语义不同的patch特征距离更远”的特性。
-The core module in our proposed pipeline is the feature encoder $f_\theta$, which projects high-dimensional image patch to low-dimensional feature vector in space $\mathbb{Z}$. Its purpose is making feature distance closer between similar image patches, while farther between different image patches. In Fig.~\ref{fig:anchor_dis}, we visualize some case studies. In all images, the query anchors are circled by yellow rings, while the other anchor patches are randomly sampled and colorized by its feature distance to the query anchor. For example, in Fig.~\ref{fig:dataaug}(a), the query anchor is located on earth road. We can find that patches on earth road are closer to red, and other patches located on different semantic area are generally blue, which indicate farther distance to the query anchor. The feature distance distribution is accord with human annotated anchor labels. Similar situations are general on images (a)-(f). As a result, the learned feature encoder and distance measurement are able to distinguish similar or different image patches.
+The core module in our proposed pipeline is the feature encoder $f_\theta$, which projects a high-dimensional image patch to a low-dimensional feature vector in space $\mathbb{Z}$. Its purpose is to make feature distance closer between similar image patches, while farther between different image patches. In Fig.~\ref{fig:anchor_dis}, we visualize some concrete cases. In all images, the query anchors are circled by yellow rings, while the other anchor patches are randomly sampled and colorized by their feature distances to the query anchor. For example, in Fig.~\ref{fig:dataaug}(a), the query anchor is located on the earth road. We can find that patches on the earth road are closer to red, and other patches located on different semantic areas are generally blue, which indicates the farther distance to the query anchor. The feature distance distribution is in accord with human-annotated anchor labels. Similar situations are general in other images. As a result, the learned feature encoder and distance measurement are able to distinguish similar or different image patches.
 
 \begin{figure}[]
 	%	\vspace{-2mm}
@@ -307,7 +307,7 @@ The core module in our proposed pipeline is the feature encoder $f_\theta$, whic
 	\label{fig:kmeans_exp}
 \end{figure}
 
-\subsubsection{Cross Validation and Ablation Study}
+\subsubsection{Cross-Validation and Ablation Study}
 
 %\textbf{问题1}：我们的模型设计(数据增强+背景信息)是否性能较优，且在不同条件下有泛化能力?
 %\textbf{结论1}：从表\ref{tab:cross_eval}中最后一列看出，BG320模型在测试集上具有最好的准确率；且加入了背景信息的3个模型在训练/测试集不同的情况下都可以达到0.85以上的准确率(泛化能力)。 说明我们的模型设计性能较优且有一定泛化能力。
@@ -317,27 +317,27 @@ The core module in our proposed pipeline is the feature encoder $f_\theta$, whic
 %
 %\textbf{问题3}：[Ablation Study 2]聚类数量K对结果的影响如何？
 %\textbf{结论3}：从图\ref{fig:kmeans_exp}看出，聚类数量的变化会略微影响锚点吻合度, 但不是决定因素。整体来看，不同模型的性能排序与结论1一致。
-For comprehensive evaluation of the proposed method, we make cross validation on models with different settings, and the statistics of $\mathcal{R}$ are shown in Table~\ref{tab:cross_eval}. The table cells are colorized by column data, when training and testing on different subsets. The last column lists the average performance $\bar{\mathcal{R}}$ of models on test sets (different subsets with the training one). It is obviously that \textit{BG320} has the best performance on test sets, and all three models with background information have $\mathcal{R}$ over 0.85 among all training/testing combinations, which demonstrates the robustness of our proposed method.
+For comprehensive evaluations of the proposed method, we make cross-validation on models with different settings, and the statistics are shown in Table~\ref{tab:cross_eval}. The table cells are colorized along column data when training and testing on different subsets. The last column lists the average anchor accuracy $\bar{\mathcal{R}}$ on test sets (subsets different with the training one). It is obvious that \textit{BG320} has the best performance on test sets, and all three models with background information have $\mathcal{R}$ over 0.85 among all conditions, which demonstrates the robustness of our proposed method.
 
 \begin{figure*}[]
 	%	\vspace{-2mm}
 	\centering
 	\includegraphics[width=0.93\textwidth]{semantic_segmentation.pdf}
-	\caption{Some cases of fine-grained semantic segmentation.}
+	\caption{Some results of fine-grained semantic segmentation.}
 	\label{fig:semantic_segmentation}
 \end{figure*}
 
-Comparing the basic data augmentation with background information, they can both increase models' performance, while the latter makes more contribution. Besides, increasing background size could sightly improve the overall performance, but not obvious at all situations.
+Comparing the data augmentation with background information, they can both increase models' performance, while the latter makes more contribution. Besides, increasing background size could sightly improve overall performance, but not obviously in all situations.
 
 \begin{figure*}[]
 	\centering
 	\includegraphics[width=0.95\textwidth]{semantic_mapping.pdf}
-	\caption{Case study of fine-grained semantic map and confidence map, compared with coarse-grained road extraction results. (a) video image. (b) coarse-grained segmentation. (c) coarse-grained bird's-eye-view semantic map. (d) fine-grained semantic segmentation projected by point clouds. (e) fine-grained bird's-eye-view semantic map. (f) confidence map projected on camera-view, the whiter the higher confidence. (g) bird's-eye-view confidence map.}
+	\caption{Case study of fine-grained semantic map and confidence map, compared with coarse-grained  results. (a) scene image. (b) coarse-grained segmentation (binary classification). (c) coarse-grained semantic map (bird's-eye-view). (d) fine-grained semantic segmentation (projected on point clouds). (e) fine-grained semantic map (bird's-eye-view). (f) confidence map projected to camera-view, whiter pixels indicate higher confidence. (g) bird's-eye-view confidence map.}
 	\label{fig:semantic_mapping}
 	\vspace{-4mm}
 \end{figure*}
 
-By the way, above experiments uniformly used clustering number $\mathcal{K}=6$. How does clustering number affects models' performance? An ablation study of $\mathcal{K}$ is made, and the results are shown in Fig.~\ref{fig:kmeans_exp}. We can find that the models' performance with regard to $\mathcal{K}$ are basically stable when $\mathcal{K} \geq 4$, and slightly decrease when $\mathcal{K}>6$. In general, models' performance with different $\mathcal{K}$s approximately order the same as Table~\ref{tab:cross_eval}. Therefore, we choose $\mathcal{K}=6$ as other experiments' setting, which balances the fine-grained demand and model performance.
+By the way, above experiments uniformly used clustering number $\mathcal{K}=6$. How does $\mathcal{K}$ affects models' performance? An ablation study of $\mathcal{K}$ is made and the results are shown in Fig.~\ref{fig:kmeans_exp}. We can find that the models' performance with regard to $\mathcal{K}$ are basically stable when $\mathcal{K} \geq 4$, and slightly decrease when $\mathcal{K}>6$. In general, models' performance approximately order the same as Table~\ref{tab:cross_eval}. Therefore, we choose $\mathcal{K}=6$ as other experiments' setting to balance the fine-grained demand and model performance.
 
 
 \subsubsection{Fine-Grained Semantic Segmentation and Mapping}
@@ -346,28 +346,28 @@ By the way, above experiments uniformly used clustering number $\mathcal{K}=6$. 
 %3. 借助激光雷达的数据，我们统计了各类别对应的激光点高度均值、方差的分布，结合图\ref{fig:lidar_analysis}进行说明；
 %结论：我们的算法能够的到有效的细粒度语义分割结果，并可以用于语义地图、场景理解等应用中。
 
-Due to the absent of ground truth for fine-grained off-road semantic segmentation task, we next analyze the validity of our fine-grained results through case study of semantic segmentation and mapping. Besides, we compare different categories traversability cost by additional LiDAR data. The following results are all based on the model trained by 50 frames of subset A.
+Due to the absence of ground truth for fine-grained off-road semantic segmentation task, we next analyze the validity of our fine-grained results through case studies of semantic segmentation and mapping. Besides, we compare traversability cost of different categories by additional LiDAR data analysis. The following results are all based on the model trained by 50 frames of subset A.
 
 \begin{figure*}[]
 	%	\vspace{-2mm}
 	\centering
 	\includegraphics[width=\textwidth]{lidar_analysis.pdf}
-	\caption{Traversability analysis of semantic clusters based on point clouds. (a-c) boxplots of points average height, indicate height distribution of different categories. (d-f) boxplots of points height variance, indicate surface flatness and traversability cost. }
+	\caption{Traversability analysis of semantic clusters based on 3D LiDAR data. (a-c) boxplots of points average height, indicate height distribution of different categories. (d-f) boxplots of points height variance, indicate surface flatness and traversability cost. }
 	\label{fig:lidar_analysis}
 	\vspace{-5mm}
 \end{figure*}
 
-Fig.~\ref{fig:semantic_segmentation} shows some cases of fine-grained semantic segmentation. This work focuses on off-road traversability analysis, so we do not pay attention to the sky area, and only bottom half of the image are predicted for simplicity. The semantic labels are not pre-assigned, we can find some uniform semantic meanings through these concrete cases. For example, green indicates hard earth road and paved road, blue pixels are vegetation, yellow pixels are road with fallen leaves or muddy area, red pixels are stones or woods, etc. Different colors represent different clusters, and they can generally distinguish diverse semantic meanings.
+Fig.~\ref{fig:semantic_segmentation} shows some cases of fine-grained semantic segmentation. This work focuses on off-road traversability analysis, so we do not pay attention to the sky area, and only the bottom half of the image is predicted for simplicity. The semantic labels are not pre-designed, but we can find their intrinsic meanings through these concrete cases. For example, green indicates hard earth road and paved road, blue pixels are vegetation, yellow pixels are road with fallen leaves or soft earth, red pixels are stones or woods, etc. Different colors represent different clusters, and they can generally distinguish diverse semantic meanings.
 
-To show the overall performance and consistence of the fine-grained prediction on continuous video frames, we make semantic maps and confidence maps as described in Sec.~\ref{3_SM}. As shown in Fig.~\ref{fig:semantic_mapping}(d)(e), our fine-grained predictions can label the roadside area (yellow) with higher traversability cost than middle road (green), while the traditional coarse-grained region grow method is unable to distinguish them. In Fig.~\ref{fig:semantic_mapping}(case 2), let us pay attention to bumps in the middle of the road, which is a hard case. Although it has been separated in the single frame prediction in Fig.~\ref{fig:semantic_mapping}(d), its segmentation is not stable enough to obtain majority votes in the semantic map. The good news is, confidence map in Fig.~\ref{fig:semantic_mapping}(f)(g) can be helpful to distinguish this subtle traversability difference, where the bumps area are darker than other well-travelled road.
+To show the consistency of fine-grained predictions on continuous video frames and get overall scene understanding, we make semantic maps and confidence maps as described in Sec.~\ref{3_SM}. As shown in Fig.~\ref{fig:semantic_mapping}(case 1), our fine-grained predictions can label the roadside area (yellow) with higher traversability cost than middle road (green), while the traditional coarse-grained result is unable to distinguish them. In Fig.~\ref{fig:semantic_mapping}(case 2), let us pay attention to bulges in the middle of the road, which is a hard case. Although it has been separated in the single frame prediction in Fig.~\ref{fig:semantic_mapping}(d), its segmentation is not stable enough to obtain majority votes in the semantic map. The good news is, confidence map in Fig.~\ref{fig:semantic_mapping}(f)(g) can be helpful to distinguish this subtle traversability difference, where the bumpy area are darker than other flat roads.
 
-More than case studies, a statistical traversability analysis is provided in Fig.~\ref{fig:lidar_analysis}, which is based on 3D point clouds with labels projected from image semantic segmentation. By the way, the semantic meanings of color table is not pre-defined, but concluded from our model's predictions.
-In Fig.~\ref{fig:lidar_analysis}(a-c), it is obvious that green, yellow and cyan are mainly distribute around the ground level, which are three primary road types. Furthermore, in Fig.~\ref{fig:lidar_analysis}(d-f), we can find their different traversability cost, where green points have the narrowest variance distribution, corresponding to the most well-travelled paved road and hard earth road. Yellow and cyan boxes are longer, indicating more bumpy road surface. They are mainly soft earth, bumps or muddy area at the roadside. Blue boxes are mostly bushes and trees, with the highest average height and traversability cost, which is in accord with boxplots distribution. In summary, the statistical analysis of additional 3D LiDAR data can prove the validity of our fine-grained off-road semantic segmentation and mapping.
+More than case studies, a statistical traversability analysis is provided in Fig.~\ref{fig:lidar_analysis}, which is based on 3D point clouds with labels projected from image semantic segmentation. By the way, semantic meanings of the color table are not pre-defined but concluded from our model's predictions.
+In Fig.~\ref{fig:lidar_analysis}(a-c), it is obvious that green, yellow, and cyan mainly distribute around the ground level, which are three primary road types. Furthermore, in Fig.~\ref{fig:lidar_analysis}(d-f), we can find their different traversability cost, where the green box have the narrowest variance distribution, corresponding to the most easily passable paved road and hard earth. Yellow and cyan boxes are longer, indicating bumpier road surface. They are mainly soft earth, bulges, or muddy areas on the roadside. Blue boxes are corresponding to bushes and trees, with the highest average height and traversability cost. In summary, the statistical analysis of additional 3D LiDAR data can prove the validity of our fine-grained off-road semantic segmentation and mapping results.
 
 \begin{figure*}[]
 	\centering
 	\includegraphics[width=0.9\textwidth]{challenges.pdf}
-	\caption{Challenging case: when meeting unseen semantic categories.}
+	\caption{A challenging case: when meeting unseen semantic categories.}
 	\label{fig:challenges}
 	\vspace{-4mm}
 \end{figure*}
@@ -375,13 +375,16 @@ In Fig.~\ref{fig:lidar_analysis}(a-c), it is obvious that green, yellow and cyan
 \subsection{Challenges}
 %1. 预测结果连续性不够好且计算复杂度高：目前添加背景引入上下文信息的方式比较简单，预测过程中滑动窗逐个预测patch类别，并没有显式地用到一致性先验；将来需要探究如何利用时空一致性优化性能和计算效率。
 %2. 没有见过的路面材质/OOD样本：目前的方法是根据K-Means结果强行并入某一类，将来需要进一步探究如何让算法主动发现OOD样本，并请求人工标注，使得模型可以增量式学习、更新。
-Currently, there are still some challenges for the proposed method. Firstly, the current pipeline to obtain dense predictions has relatively high computational cost, which can be optimized by temporal and spatial consistency in future works.
-The second one is unseen semantic categories, or called out of distribution (OOD) samples, as shown in Fig.~\ref{fig:challenges}. The current pipeline will not discriminate unseen category samples, but simply classified them into existing clusters, which may lead to confused predictions as Fig.~\ref{fig:challenges}(c). To minimize labor cost, the OOD sample detection and incremental training mechanism deserve to be explored in our future works.
+Currently, there are still some challenges with the proposed method. Firstly, the current pipeline to obtain dense predictions has a relatively high computational cost, which can be optimized by temporal and spatial consistency in future works.
+The second one is unseen semantic categories, or called out of distribution (OOD) samples, as shown in Fig.~\ref{fig:challenges}. The current pipeline will not discriminate unseen category samples, but simply classified them into existing semantic clusters, which may lead to confused predictions as Fig.~\ref{fig:challenges}(c). To minimize labor costs, the OOD sample detection and incremental training mechanism deserve to be explored in our future works.
 
 
 
 \section{CONCLUSIONS}	\label{conclusions}
-In this paper, we propose a fine-grained off-road semantic segmentation and mapping method based on contrastive learning techniques. The proposed method can significantly solve the challenges in off-road semantic segmentation and mapping tasks, i.e. ambiguous problem definition, difficulties in labeling data, and the scarcity of large-scale human annotations. We design a contrastive learning pipeline, which can automatically learn feature representations with only a small number of low-cost anchor annotations, then predict fine-grained semantic segmentation results with no demand of laborious pixel-level annotations. The case study and cross validation on diverse off-road subsets prove the validity of our fine-grained semantic segmentation and mapping results. Future work will be addressed on improving computational efficiency by temporal and spatial consistency, while exploring OOD sample detection and incremental learning mechanism for long-term deployment on off-road self-driving platforms.
+In this paper, we propose a fine-grained off-road semantic segmentation and mapping method based on contrastive learning techniques. 
+The proposed method can learn discriminative feature representations with only a small number of sparse anchor annotations, with no demand of laborious pixel-level labels, which significantly reduces labeling difficulties and cost in off-road environment.
+We examine our fine-grained results across diverse off-road scenes and prove its validity through additional LiDAR data analysis.
+Future work will be addressed on improving its computational efficiency by temporal and spatial consistency, while exploring OOD sample detection mechanism and incremental learning ability for long-term deployment on off-road robots.
 
 %\addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
                                   % on the last page of the document manually. It shortens
