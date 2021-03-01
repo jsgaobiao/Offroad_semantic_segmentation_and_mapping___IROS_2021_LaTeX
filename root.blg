@@ -1,48 +1,17 @@
-This is BibTeX, Version 0.99d
-Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
-The top-level auxiliary file: root.aux
-Reallocating 'name_of_file' (item size: 1) to 6 items.
-The style file: unsrt.bst
-Reallocating 'name_of_file' (item size: 1) to 5 items.
-Database file #1: root.bib
-You've used 34 entries,
-            1791 wiz_defined-function locations,
-            629 strings with 10453 characters,
-and the built_in function-call counts, 10952 in all, are:
-= -- 1020
-> -- 517
-< -- 19
-+ -- 184
-- -- 150
-* -- 727
-:= -- 1595
-add.period$ -- 115
-call.type$ -- 34
-change.case$ -- 34
-chr.to.int$ -- 0
-cite$ -- 34
-duplicate$ -- 520
-empty$ -- 995
-format.name$ -- 150
-if$ -- 2554
-int.to.chr$ -- 0
-int.to.str$ -- 34
-missing$ -- 34
-newline$ -- 173
-num.names$ -- 34
-pop$ -- 133
-preamble$ -- 1
-purify$ -- 0
-quote$ -- 0
-skip$ -- 323
-stack$ -- 0
-substring$ -- 809
-swap$ -- 222
-text.length$ -- 19
-text.prefix$ -- 0
-top$ -- 0
-type$ -- 0
-warning$ -- 0
-while$ -- 102
-width$ -- 36
-write$ -- 384
+[0] Config.pm:311> INFO - This is Biber 2.16
+[0] Config.pm:314> INFO - Logfile is 'root.blg'
+[217] biber-MSWIN64:340> INFO - === 
+[297] Biber.pm:415> INFO - Reading 'root.bcf'
+[504] Biber.pm:952> INFO - Found 34 citekeys in bib section 0
+[529] Biber.pm:4340> INFO - Processing section 0
+[550] Biber.pm:4531> INFO - Looking for bibtex format file 'root.bib' for section 0
+[695] bibtex.pm:1689> INFO - LaTeX decoding ...
+[761] bibtex.pm:1494> INFO - Found BibTeX data source 'root.bib'
+[1120] Utils.pm:395> WARN - legacy month field 'June' in entry 'Wu_2018_CVPR' is not an integer - this will probably not sort properly.
+[1179] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1179] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1179] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[1179] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[1215] bbl.pm:654> INFO - Writing 'root.bbl' with encoding 'UTF-8'
+[1252] bbl.pm:757> INFO - Output to root.bbl
+[1254] Biber.pm:128> INFO - WARNINGS: 1
